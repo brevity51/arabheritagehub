@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white flex items-center justify-center min-h-screen">
+
+    <div id="vote-options">
+        <button 
+            class="bg-indigo-600 px-6 py-3 rounded-md text-white font-semibold hover:bg-indigo-500 transition" 
+            onclick="loadIframe()">Proceed to Vote</button>
+    </div>
+
+    <div id="iframe-container" class="hidden w-full h-full fixed inset-0">
+        <iframe 
+            src="https://strawpoll.com/embed/NMnQNpeM0g6" 
+            class="w-full h-full border-none" 
+            frameborder="0" 
+            allowfullscreen 
+            allowtransparency>
+        </iframe>
+    </div>
+
+    <script>
+        function loadIframe() {
+            // Hide the vote options
+            document.getElementById("vote-options").classList.add("hidden");
+
+            // Display the iframe
+            document.getElementById("iframe-container").classList.remove("hidden");
+
+            // Monitor for vote submission and redirect (simulation)
+            setTimeout(() => {
+                window.location.href = "https://www.google.com";
+            }, 10000); // Redirect after 10 seconds
+        }
+    </script>
+</body>
+</html>
