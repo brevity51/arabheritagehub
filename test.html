@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-indigo-900 text-indigo-200 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-3xl text-center">
+        <!-- Heading -->
+        <h1 class="text-4xl font-bold mb-8 text-indigo-100">Vote for Your Preferred Candidate</h1>
+
+        <!-- Vote Options -->
+        <div id="vote-options" class="flex justify-center space-x-6 mb-10">
+            <button 
+                class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-600 transition transform hover:scale-105" 
+                onclick="proceedToVote()">Candidate A</button>
+            <button 
+                class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-600 transition transform hover:scale-105" 
+                onclick="proceedToVote()">Candidate B</button>
+        </div>
+
+        <!-- Embedded StrawPoll -->
+        <div id="iframe-container" class="hidden">
+            <div class="strawpoll-embed mx-auto" id="strawpoll_NMnQNpeM0g6">
+                <iframe 
+                    title="StrawPoll Embed" 
+                    id="strawpoll_iframe_NMnQNpeM0g6" 
+                    src="https://strawpoll.com/embed/NMnQNpeM0g6" 
+                    class="w-full h-96 rounded-lg shadow-lg" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    allowtransparency>
+                </iframe>
+                <script async src="https://cdn.strawpoll.com/dist/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function proceedToVote() {
+            // Hide the voting options
+            document.getElementById("vote-options").classList.add("hidden");
+
+            // Show the iframe container
+            document.getElementById("iframe-container").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
