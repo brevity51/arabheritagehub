@@ -1,13 +1,14 @@
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyDhn80byD69jCo4oexdKdkCHUgGw9nO6CM",
-  authDomain: "dubai4db.firebaseapp.com",
-  databaseURL: "https://dubai4db-default-rtdb.firebaseio.com",
-  projectId: "dubai4db",
-  storageBucket: "dubai4db.appspot.com",
-  messagingSenderId: "776520121975",
-  appId: "1:776520121975:web:248815949672b2c4371072"
+  apiKey: "AIzaSyDynO-Dj9MA7IHrdaD2MvnsavxyM_dVlmA",
+  authDomain: "talentpol.firebaseapp.com",
+  databaseURL: "https://talentpol-default-rtdb.firebaseio.com",
+  projectId: "talentpol",
+  storageBucket: "talentpol.firebasestorage.app",
+  messagingSenderId: "160733844596",
+  appId: "1:160733844596:web:20a27919412f8fd0fa6d21"
 };
+
 firebase.initializeApp(firebaseConfig);
 const appCheck = firebase.appCheck();
 console.log(appCheck);
