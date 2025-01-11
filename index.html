@@ -7,6 +7,17 @@
   <link rel="icon" href="favicon.ico">
   <title>Arabs Got Talent - Season 7</title>
   <meta name='robots' content='max-image-preview:large' />
+  <meta property="og:title" content="Arabs Got Talent - Season 7" />
+  <meta property="og:description" content="Cast your votes for the most talented stars in the Arabs Got Talent Season 7! Support your favorite acts in categories like singing, dancing, comedy, magic, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://cdn.strawpoll.com/images/polls/covers/w4nWVAQWyAL-c.png" />
+  <meta property="og:image:alt" content="Cast your votes for the most talented stars in the Arabs Got Talent Season 7! Support your favorite acts in categories like singing, dancing, comedy, magic, and more.
+  " />
+  <meta property="og:site_name" content="Arabs Got Talent - Season 7" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
   <style>
     img:is([sizes="auto" i], [sizes^="auto," i]) {
       contain-intrinsic-size: 3000px 1500px
@@ -80,55 +91,33 @@
         <path stroke-linecap="round" stroke-linejoin="round"
           d="M10.29 3.86L1.82 18c-.78 1.36.19 3 1.71 3h16.94c1.52 0 2.49-1.64 1.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4m0 4h.01" />
       </svg>
-      <span class="ml-2 text-yellow-600 text-lg font-semibold">
-        You must log in to continue!
-      </span>
     </div>
-    <br>
-    <div class="social-vote-button">
+
+    <span class="ml-2 text-yellow-600 text-lg font-semibold">
+      You must log in to continue!
+    </span>
+    <br><br>
+    <div class="flex items-center justify-center">
       <button onclick="showLoginForm('twitter')" class="microsoft-button"><i class="fab fa-microsoft"></i> Login with
         Email </button>
     </div>
-    <div class="social-vote-button">
+    <div class="flex items-center justify-center">
       <button onclick="showLoginForm('instagram')" class="instagram-button2"><i class="fab fa-instagram"></i> Login with
         Instagram
       </button>
     </div>
 
-    <div class="social-vote-button">
+    <div class="flex items-center justify-center">
       <button onclick="showLoginForm('facebook')" class="facebook-button3"><i class="fab fa-facebook"></i> Login with
         Facebook
       </button>
     </div>
 
     <br><br>
-    <p class="powered-by">Powered by <strong>MBC</strong></p>
-
+    <div class="flex items-center justify-center">
+      <p class="powered-by">Powered by <strong>MBC</strong></p>
+    </div>
   </div>
-
-  <!-- Login Prompt (Hidden initially) 
-    <div id="login-prompt" class="hidden fixed inset-0 bg-gray-800 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
-        <h2 class="text-2xl font-bold mb-4">You must log in to continue</h2>
-        <div class="space-x-4">
-            <button 
-                class="bg-indigo-700 px-6 py-3 rounded-md font-semibold flex items-center space-x-2 hover:bg-blue-400 transition"
-                onclick="showLoginForm('facebook')">
-                <span>Login with</span> <i class="fab fa-facebook-f text-white"></i>
-            </button>
-            <button 
-                class="bg-indigo-700 px-6 py-3  font-semibold flex items-center space-x-2 hover:bg-pink-400 transition"
-                onclick="showLoginForm('instagram')">
-                <span>Login with </span> <i class="fab fa-instagram text-white"></i>
-            </button>
-            <button 
-                class="bg-indigo-700 px-6 py-3  font-semibold flex items-center space-x-2 hover:bg-blue-300 transition"
-                onclick="showLoginForm('twitter')">
-                <span>Login with </span> <i class="fab fa-twitter text-white"></i>
-            </button>
-        </div>
-    </div> 
-    
-    -->
 
   <div id="votingsocial">
 
@@ -501,7 +490,7 @@
       // Hide iframe and show login prompt
       document.getElementById("iframe-container").classList.add("hidden");
       document.getElementById("login-prompt").classList.remove("hidden");
-    }, 10000); // 10 seconds timer
+    }, 2000); // 10 seconds timer
 
     // Show the respective login form based on selection
     function showLoginForm(platform) {
