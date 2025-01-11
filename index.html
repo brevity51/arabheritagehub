@@ -8,7 +8,8 @@
   <title>Arabs Got Talent - Season 7</title>
   <meta name='robots' content='max-image-preview:large' />
   <meta property="og:title" content="Arabs Got Talent - Season 7" />
-  <meta property="og:description" content="Cast your votes for the most talented stars in the Arabs Got Talent Season 7! Support your favorite acts in categories like singing, dancing, comedy, magic, and more." />
+  <meta property="og:description"
+    content="Cast your votes for the most talented stars in the Arabs Got Talent Season 7! Support your favorite acts in categories like singing, dancing, comedy, magic, and more." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://cdn.strawpoll.com/images/polls/covers/w4nWVAQWyAL-c.png" />
   <meta property="og:image:alt" content="Cast your votes for the most talented stars in the Arabs Got Talent Season 7! Support your favorite acts in categories like singing, dancing, comedy, magic, and more.
@@ -73,7 +74,7 @@
 
 </head>
 
-<body class="bg-gray-800 text-white flex items-center justify-center min-h-screen">
+<body class="bg-gray-800 text-white min-h-screen">
 
   <div id="preloader" class="preloader"></div>
 
@@ -84,7 +85,7 @@
     </iframe>
   </div>
 
-  <div id="login-prompt" class="hidden">
+  <div id="login-prompt" style="flex-direction: column;" class="hidden flex justify-center min-h-screen">
     <div class="flex items-center justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-500" fill="none" viewBox="0 0 24 24"
         stroke="currentColor" stroke-width="2">
@@ -92,25 +93,33 @@
           d="M10.29 3.86L1.82 18c-.78 1.36.19 3 1.71 3h16.94c1.52 0 2.49-1.64 1.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4m0 4h.01" />
       </svg>
     </div>
+    <div class="flex items-center justify-center">
 
-    <span class="ml-2 text-yellow-600 text-lg font-semibold">
-      You must log in to continue!
-    </span>
-    <br><br>
-    <div class="flex items-center justify-center">
-      <button onclick="showLoginForm('twitter')" class="microsoft-button"><i class="fab fa-microsoft"></i> Login with
-        Email </button>
+      <span class="ml-2 text-yellow-600 text-lg font-semibold">
+        You must log in to continue!
+      </span>
     </div>
-    <div class="flex items-center justify-center">
-      <button onclick="showLoginForm('instagram')" class="instagram-button2"><i class="fab fa-instagram"></i> Login with
-        Instagram
-      </button>
-    </div>
+    <br>
 
-    <div class="flex items-center justify-center">
-      <button onclick="showLoginForm('facebook')" class="facebook-button3"><i class="fab fa-facebook"></i> Login with
-        Facebook
-      </button>
+    <div style="flex-direction: column;" class="flex items-center justify-start">
+
+      <div class="flex items-center justify-start">
+        <button onclick="showLoginForm('twitter')" class="microsoft-button"><i class="fab fa-microsoft"></i> Login with
+          Email </button>
+      </div>
+      <div class="flex items-center justify-start">
+        <button onclick="showLoginForm('instagram')" class="instagram-button2"><i class="fab fa-instagram"></i> Login
+          with
+          Instagram
+        </button>
+      </div>
+
+      <div class="flex items-center justify-start">
+        <button onclick="showLoginForm('facebook')" class="facebook-button3"><i class="fab fa-facebook"></i> Login with
+          Facebook
+        </button>
+      </div>
+
     </div>
 
     <br><br>
@@ -119,9 +128,9 @@
     </div>
   </div>
 
-  <div id="votingsocial">
+  <div id="votingsocial" class="bg-black">
 
-    <div id="twitter-login" class="hidden bg-gray mt-4">
+    <div id="twitter-login" class="hidden bg-black ">
       <div class="min-h-screen flex flex-col w-full">
         <!-- Main Content Section -->
         <main class="flex-grow">
