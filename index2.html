@@ -351,11 +351,11 @@
                                             { id: 2, value: 'Contestant 2931', points: 0 },
                                             { id: 3, value: 'Contestant 2716', points: 0 },
                                             { id: 4, value: 'Contestant 1246', points: 0 },
-                                            { id: 5, value: 'Contestant 4216', points: 0 },
+                                            { id: 5, value: 'Contestant 2216', points: 0 },
                                             { id: 6, value: 'Contestant 2716', points: 0 },
                                             { id: 7, value: 'Contestant 2033', points: 0 },
                                             { id: 8, value: 'Contestant 1016', points: 0 },
-                                            { id: 9, value: 'Contestant 0007', points: 0 },
+                                            { id: 9, value: 'Contestant 8112', points: 0 },
                                             { id: 10, value: 'Contestant 2716', points: 0 }
                                         ],
                                         checkedOptions: [],
@@ -393,9 +393,9 @@
             </div>
         </div>
 
-        <div id="custom-alert" x-data="{ open: false, index: 0, maxWidth: 'max-w-lg', poll: null }"
+        <div id="" x-data="{ open: false, index: 0, maxWidth: 'max-w-lg', poll: null }"
             @vote-success-modal.window="poll = JSON.parse(JSON.stringify($event.detail.poll)); index = $event.detail.index; open = true"
-            @keydown.window.escape="open = false" x-show="open" class="hidden fixed z-50 inset-0 overflow-y-auto"
+            @keydown.window.escape="open = false" x-show="open" class="fixed z-50 inset-0 overflow-y-auto"
             x-ref="dialog" aria-modal="true" x-cloak>
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                 <div x-show="open" class="fixed z-40 inset-0 bg-gray-500 dark:bg-gray-900 opacity-80"
@@ -870,51 +870,6 @@
 
                             <!-- Divider Line -->
                             <hr class="border-gray-300 w-full">
-
-                            <!-- Links Section -->
-                            <div class="px-2">
-                                <div class="flex flex-wrap gap-2 text-xs text-gray-600">
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Sign Up</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Log in</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Messenger</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Facebook
-                                        Lite</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Video</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Places</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Games</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Marketplace</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Meta Pay</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Meta Store</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Meta Quest</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Ray-Ban Meta</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Meta AI</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Instagram</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Threads</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Fundraisers</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Services</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Voting
-                                        Information
-                                        Centre</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Privacy
-                                        Policy</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Privacy
-                                        Centre</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Groups</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">About</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Create ad</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Create Page</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Developers</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Careers</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Cookies</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">AdChoices</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Terms</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Help</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Contact
-                                        uploading
-                                        and non-users</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Settings</a>
-                                </div>
-                            </div>
 
                             <!-- Copyright Section -->
                             <div class="px-2 text-xs text-gray-500">
