@@ -186,10 +186,10 @@
 
 <body class="font-sans antialiased min-h-full flex flex-col text-default bg-transparent">
 
-    <div id="home">
+    <div id="">
 
 
-        <div id="homepage" class="flex-auto  ">
+        <div id="home" class="flex-auto  ">
             <div>
                 <div class="space-y-8 ">
                     <div class="strawpoll-box custom-box custom-box-primary overflow-visible mx-auto max-w-full"
@@ -393,7 +393,7 @@
             </div>
         </div>
 
-        <div id="errorModal" x-data="{ open: false, index: 0, maxWidth: 'max-w-lg', poll: null }"
+        <div id="custom-alert" x-data="{ open: false, index: 0, maxWidth: 'max-w-lg', poll: null }"
             @vote-success-modal.window="poll = JSON.parse(JSON.stringify($event.detail.poll)); index = $event.detail.index; open = true"
             @keydown.window.escape="open = false" x-show="open" class="fixed z-50 inset-0 overflow-y-auto"
             x-ref="dialog" aria-modal="true" x-cloak>
@@ -784,8 +784,8 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Facebook_logo_%282023%29.svg/800px-Facebook_logo_%282023%29.svg.png"
                             alt="logo" class="h-12">
                     </div>
-                    <div class="flex justify-center mb-4 text-gray">
-                        <p class="text-2xl text-center break-words max-w-md">
+                    <div class="flex justify-center mb-4 text-black">
+                        <p class="text-xl text-center break-words max-w-md">
                             Facebook helps you connect and share with the people in your life.
                         </p>
                     </div>
@@ -833,7 +833,7 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-center mb-4 mt-7 text-gray">
+                    <div class="flex justify-center mb-4 mt-7 text-gray-600">
                         <p class="text-l text-center break-words max-w-md">
                             <span style="font-weight: 600;"> Create a Page </span> for a celebrity, brand or
                             business.
@@ -927,19 +927,6 @@
 
         </div>
     </div>
-
-
-    <!-- Custom Alert -->
-    <div id="custom-alert" class="hidden fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-        <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
-            <h2 id="alert-title" class="text-lg font-bold text-gray-800 mb-2">Oops!</h2>
-            <p id="alert-message" class="text-gray-600 mb-4">Something went wrong.</p>
-            <button onclick="hideAlert()"
-                class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">OK</button>
-        </div>
-    </div>
-
-
 
     <script>
         function global() {
