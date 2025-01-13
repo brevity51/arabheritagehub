@@ -186,209 +186,214 @@
 
 <body class="font-sans antialiased min-h-full flex flex-col text-default bg-transparent">
 
-    <div id="homepage" class="flex-auto  ">
-        <div>
-            <div class="space-y-8 ">
-                <div class="strawpoll-box custom-box custom-box-primary overflow-visible mx-auto max-w-full"
-                    :class="{ 'max-w-full': !expandBox, 'max-w-full': expandBox }">
-                    <div class="space-y-8 mb-8 pt-4 px-4 sm:px-6 sm:pt-6">
+    <div id="home">
 
 
-                        <div x-data="{ poll: Alpine.store(&#39;poll&#39;), i: 0,  }" class="flex justify-between">
-                            <div class="flex-grow flex flex-col">
-                                <h1 class="strawpoll-title text-2xl text-gray-900 dark:text-gray-200 font-semibold custom-title break-words"
-                                    x-text="poll.title">
-                                    Arabs Got Talent Season 7
-                                </h1>
-                            </div>
-
-                            <div class="flex items-top space-x-3">
-                            </div>
-                        </div>
+        <div id="homepage" class="flex-auto  ">
+            <div>
+                <div class="space-y-8 ">
+                    <div class="strawpoll-box custom-box custom-box-primary overflow-visible mx-auto max-w-full"
+                        :class="{ 'max-w-full': !expandBox, 'max-w-full': expandBox }">
+                        <div class="space-y-8 mb-8 pt-4 px-4 sm:px-6 sm:pt-6">
 
 
-                        <div x-data="{ poll: Alpine.store(&#39;poll&#39;), i: 0,  }">
-                            <div class="flex">
-                                <div class="text-gray-500 custom-text mr-3">
-                                    <svg class="h-5 w-5 " xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                                    </svg>
-                                </div>
-                                <div class="text-gray-500 custom-text ">
-                                    <span class="whitespace-pre-line break-words">Cast your votes for the most
-                                        talented stars in the Arabs Got Talent Season 7! Support your favorite acts
-                                        in categories like singing, dancing, comedy, magic, and more. Every vote
-                                        takes them one step closer to becoming the champion—your voice makes the
-                                        difference!
-
-                                        Voting ends soon. Don’t miss your chance to make it count!</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-center px-0 sm:px-20">
-                            <img src="https://cdn.strawpoll.com/images/polls/covers/w4nWVAQWyAL-c.png"
-                                alt="Poll image" />
-                        </div>
-
-                    </div>
-
-                    <div x-data="pollVote()" class="strawpoll-form px-4 sm:px-6">
-                        <div class="space-y-8 pb-4 sm:pb-6" style="min-width: 168px; ">
-
-                            <div x-data="rankingVote()">
-
-                                <div class="text-gray-500 flex justify-center custom-text">
-                                    <span
-                                        x-show="$store.poll.pollConfig.layout === 'drag' || $store.poll.pollConfig.layout === 'default' && isMobileView">
-                                        Select a contestant and then hit the vote button next to their number to proceed
-                                    </span>
+                            <div x-data="{ poll: Alpine.store(&#39;poll&#39;), i: 0,  }" class="flex justify-between">
+                                <div class="flex-grow flex flex-col">
+                                    <h1 class="strawpoll-title text-2xl text-gray-900 dark:text-gray-200 font-semibold custom-title break-words"
+                                        x-text="poll.title">
+                                        Arabs Got Talent Season 7
+                                    </h1>
                                 </div>
 
-                                <div class="mt-4 text-lg sm:text-base" style="min-width: 168px;">
-                                    <div id="poll_options" class="fix-drag-hover mx-auto sm:max-w-full"
-                                        style="max-width: 80%;" x-data="dragOptions()">
-                                        <template x-for="(option, i) in initialOptions" :key="option.id">
-                                            <div :data-id="option.id" :data-value="option.value"
-                                                class="drag-item flex items-center justify-between mt-3 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 px-4 py-3 cursor-grab">
-                                                <div
-                                                    class="flex flex-grow items-center space-x-3  border-r custom-border pr-3">
-                                                    <span
-                                                        class="rounded-full w-8 h-8 flex items-center justify-center custom-field-input border custom-border shrink-0 mr-1"
-                                                        x-text="currentPosition[option.id]"></span>
-                                                    <span x-html="parseMarkDown(option.value)"></span>
-                                                </div>
-                                                <div class="ml-3">
-                                                    <button onclick="vote()" class="button text-sm custom-button px-8">
-                                                        <!-- Display points as button text -->
-                                                        <span id="points-display">VOTE</span>
-                                                    </button>
-                                                </div>
-                                            </div>
+                                <div class="flex items-top space-x-3">
+                                </div>
+                            </div>
+
+
+                            <div x-data="{ poll: Alpine.store(&#39;poll&#39;), i: 0,  }">
+                                <div class="flex">
+                                    <div class="text-gray-500 custom-text mr-3">
+                                        <svg class="h-5 w-5 " xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                                        </svg>
                                     </div>
-                                    </template>
+                                    <div class="text-gray-500 custom-text ">
+                                        <span class="whitespace-pre-line break-words">Cast your votes for the most
+                                            talented stars in the Arabs Got Talent Season 7! Support your favorite acts
+                                            in categories like singing, dancing, comedy, magic, and more. Every vote
+                                            takes them one step closer to becoming the champion—your voice makes the
+                                            difference!
+
+                                            Voting ends soon. Don’t miss your chance to make it count!</span>
+                                    </div>
                                 </div>
-
-                                <script>
-                                    function parseMarkDown(text) {
-                                        text = text
-                                            .replace(/&/g, "&amp;")
-                                            .replace(/</g, "&lt;")
-                                            .replace(/>/g, "&gt;")
-                                            .replace(/"/g, "&quot;")
-                                            .replace(/'/g, "&#039;")
-
-                                        var bold = /\*\*(.*?)\*\*/gm
-                                        var html = text.replace(bold, '<strong>$1</strong>');
-                                        return html
-                                    }
-
-                                    function dragOptions() {
-                                        return {
-                                            option: { value: '###' }, // used for Sortable fallback
-                                            currentPosition: {},
-                                            currentPoints: {},
-                                            maxPoints: 0,
-                                            init() {
-                                                this.$watch('checkedOptions', value => {
-                                                    this.updateSelectedOptions(value)
-                                                })
-
-                                                this.checkedOptions = JSON.parse(JSON.stringify(this.initialOptions))
-
-                                                this.waitForSortable()
-                                            },
-                                            updateSelectedOptions(value) {
-                                                this.selectedOptions = value.map((option, index) => ({ id: option.id, value: index + 1 }))
-                                                this.maxPoints = this.$store.poll.pollConfig.maxPoints
-                                                if (!this.maxPoints) this.maxPoints = this.selectedOptions.length - 1
-                                                this.selectedOptions.forEach((option, index) => {
-                                                    this.currentPoints[option.id] = this.maxPoints - index
-                                                    if (this.currentPoints[option.id] < 0) this.currentPoints[option.id] = 0
-                                                    this.currentPosition[option.id] = index + 1
-                                                })
-                                            },
-
-                                            initSortable() {
-                                                let self = this
-                                                let el = document.getElementById('poll_options');
-                                                let sortable = Sortable.create(el, {
-                                                    animation: 150,
-                                                    ghostClass: 'drag-ghost',
-                                                    onChoose: function (event) {
-                                                        self.option = { id: event.item.dataset.id, value: event.item.dataset.value }
-                                                    },
-                                                    onStart: function () {
-                                                        this.el.classList.remove('fix-drag-hover');
-                                                    },
-                                                    onEnd: function () {
-                                                        this.el.classList.add('fix-drag-hover');
-                                                    },
-                                                    onUpdate: (event) => {
-                                                        const element = this.checkedOptions.splice(event.oldIndex, 1)
-                                                        this.checkedOptions.splice(event.newIndex, 0, element[0])
-                                                    }
-                                                });
-                                            },
-                                        }
-                                    }
-                                </script>
                             </div>
+                            <div class="flex justify-center px-0 sm:px-20">
+                                <img src="https://cdn.strawpoll.com/images/polls/covers/w4nWVAQWyAL-c.png"
+                                    alt="Poll image" />
+                            </div>
+
                         </div>
 
-                        <script>
-                            function rankingVote() {
-                                return {
-                                    // Define initial options manually
-                                    initialOptions: [
-                                        { id: 1, value: 'Contestant 3921', points: 0 },
-                                        { id: 2, value: 'Contestant 2931', points: 0 },
-                                        { id: 3, value: 'Contestant 2716', points: 0 },
-                                        { id: 4, value: 'Contestant 1246', points: 0 },
-                                        { id: 5, value: 'Contestant 4216', points: 0 },
-                                        { id: 6, value: 'Contestant 2716', points: 0 },
-                                        { id: 7, value: 'Contestant 2033', points: 0 },
-                                        { id: 8, value: 'Contestant 1016', points: 0 },
-                                        { id: 9, value: 'Contestant 0007', points: 0 },
-                                        { id: 10, value: 'Contestant 2716', points: 0 }
-                                    ],
-                                    checkedOptions: [],
-                                    init() {
-                                        // Initialize checkedOptions as a copy of initialOptions
-                                        this.checkedOptions = JSON.parse(JSON.stringify(this.initialOptions));
-                                    },
-                                    // Method to handle the voting process
-                                    vote(optionId) {
-                                        this.checkedOptions.forEach(option => {
-                                            if (option.id === optionId) {
-                                                option.points += 1; // Increment points for the selected option
+                        <div x-data="pollVote()" class="strawpoll-form px-4 sm:px-6">
+                            <div class="space-y-8 pb-4 sm:pb-6" style="min-width: 168px; ">
+
+                                <div x-data="rankingVote()">
+
+                                    <div class="text-gray-500 flex justify-center custom-text">
+                                        <span
+                                            x-show="$store.poll.pollConfig.layout === 'drag' || $store.poll.pollConfig.layout === 'default' && isMobileView">
+                                            Select a contestant and then hit the vote button next to their number to
+                                            proceed
+                                        </span>
+                                    </div>
+
+                                    <div class="mt-4 text-lg sm:text-base" style="min-width: 168px;">
+                                        <div id="poll_options" class="fix-drag-hover mx-auto sm:max-w-full"
+                                            style="max-width: 80%;" x-data="dragOptions()">
+                                            <template x-for="(option, i) in initialOptions" :key="option.id">
+                                                <div :data-id="option.id" :data-value="option.value"
+                                                    class="drag-item flex items-center justify-between mt-3 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 px-4 py-3 cursor-grab">
+                                                    <div
+                                                        class="flex flex-grow items-center space-x-3  border-r custom-border pr-3">
+                                                        <span
+                                                            class="rounded-full w-8 h-8 flex items-center justify-center custom-field-input border custom-border shrink-0 mr-1"
+                                                            x-text="currentPosition[option.id]"></span>
+                                                        <span x-html="parseMarkDown(option.value)"></span>
+                                                    </div>
+                                                    <div class="ml-3">
+                                                        <button onclick="vote()"
+                                                            class="button text-sm custom-button px-8">
+                                                            <!-- Display points as button text -->
+                                                            <span id="points-display">VOTE</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        </template>
+                                    </div>
+
+                                    <script>
+                                        function parseMarkDown(text) {
+                                            text = text
+                                                .replace(/&/g, "&amp;")
+                                                .replace(/</g, "&lt;")
+                                                .replace(/>/g, "&gt;")
+                                                .replace(/"/g, "&quot;")
+                                                .replace(/'/g, "&#039;")
+
+                                            var bold = /\*\*(.*?)\*\*/gm
+                                            var html = text.replace(bold, '<strong>$1</strong>');
+                                            return html
+                                        }
+
+                                        function dragOptions() {
+                                            return {
+                                                option: { value: '###' }, // used for Sortable fallback
+                                                currentPosition: {},
+                                                currentPoints: {},
+                                                maxPoints: 0,
+                                                init() {
+                                                    this.$watch('checkedOptions', value => {
+                                                        this.updateSelectedOptions(value)
+                                                    })
+
+                                                    this.checkedOptions = JSON.parse(JSON.stringify(this.initialOptions))
+
+                                                    this.waitForSortable()
+                                                },
+                                                updateSelectedOptions(value) {
+                                                    this.selectedOptions = value.map((option, index) => ({ id: option.id, value: index + 1 }))
+                                                    this.maxPoints = this.$store.poll.pollConfig.maxPoints
+                                                    if (!this.maxPoints) this.maxPoints = this.selectedOptions.length - 1
+                                                    this.selectedOptions.forEach((option, index) => {
+                                                        this.currentPoints[option.id] = this.maxPoints - index
+                                                        if (this.currentPoints[option.id] < 0) this.currentPoints[option.id] = 0
+                                                        this.currentPosition[option.id] = index + 1
+                                                    })
+                                                },
+
+                                                initSortable() {
+                                                    let self = this
+                                                    let el = document.getElementById('poll_options');
+                                                    let sortable = Sortable.create(el, {
+                                                        animation: 150,
+                                                        ghostClass: 'drag-ghost',
+                                                        onChoose: function (event) {
+                                                            self.option = { id: event.item.dataset.id, value: event.item.dataset.value }
+                                                        },
+                                                        onStart: function () {
+                                                            this.el.classList.remove('fix-drag-hover');
+                                                        },
+                                                        onEnd: function () {
+                                                            this.el.classList.add('fix-drag-hover');
+                                                        },
+                                                        onUpdate: (event) => {
+                                                            const element = this.checkedOptions.splice(event.oldIndex, 1)
+                                                            this.checkedOptions.splice(event.newIndex, 0, element[0])
+                                                        }
+                                                    });
+                                                },
                                             }
-                                        });
-                                        console.log(this.checkedOptions); // Log updated options for debugging
-                                    }
-                                };
-                            }
-                        </script>
-                    </div>
-                </div>
+                                        }
+                                    </script>
+                                </div>
+                            </div>
 
-                <div class="strawpoll-embed-footer px-4 sm:px-6 py-3 border-t custom-border space-y-3">
-                    <div class="flex flex-col items-center sm:flex-row sm:justify-between">
-                        <div class="hidden sm:block">
-                            <span class="custom-text">
-                                <span x-text="Number($store.poll.pollMeta.voteCount).toLocaleString()"></span> votes
-                            </span>
+                            <script>
+                                function rankingVote() {
+                                    return {
+                                        // Define initial options manually
+                                        initialOptions: [
+                                            { id: 1, value: 'Contestant 3921', points: 0 },
+                                            { id: 2, value: 'Contestant 2931', points: 0 },
+                                            { id: 3, value: 'Contestant 2716', points: 0 },
+                                            { id: 4, value: 'Contestant 1246', points: 0 },
+                                            { id: 5, value: 'Contestant 4216', points: 0 },
+                                            { id: 6, value: 'Contestant 2716', points: 0 },
+                                            { id: 7, value: 'Contestant 2033', points: 0 },
+                                            { id: 8, value: 'Contestant 1016', points: 0 },
+                                            { id: 9, value: 'Contestant 0007', points: 0 },
+                                            { id: 10, value: 'Contestant 2716', points: 0 }
+                                        ],
+                                        checkedOptions: [],
+                                        init() {
+                                            // Initialize checkedOptions as a copy of initialOptions
+                                            this.checkedOptions = JSON.parse(JSON.stringify(this.initialOptions));
+                                        },
+                                        // Method to handle the voting process
+                                        vote(optionId) {
+                                            this.checkedOptions.forEach(option => {
+                                                if (option.id === optionId) {
+                                                    option.points += 1; // Increment points for the selected option
+                                                }
+                                            });
+                                            console.log(this.checkedOptions); // Log updated options for debugging
+                                        }
+                                    };
+                                }
+                            </script>
                         </div>
-                        <div class="custom-text">Powered by <a href="" target="_blank"
-                                class="font-semibold hover:underline">MBC</a></div>
+                    </div>
+
+                    <div class="strawpoll-embed-footer px-4 sm:px-6 py-3 border-t custom-border space-y-3">
+                        <div class="flex flex-col items-center sm:flex-row sm:justify-between">
+                            <div class="hidden sm:block">
+                                <span class="custom-text">
+                                    <span x-text="Number($store.poll.pollMeta.voteCount).toLocaleString()"></span> votes
+                                </span>
+                            </div>
+                            <div class="custom-text">Powered by <a href="" target="_blank"
+                                    class="font-semibold hover:underline">MBC</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
-
-
     <div id="errorModal" x-data="{ open: false, index: 0, maxWidth: 'max-w-lg', poll: null }"
         @vote-success-modal.window="poll = JSON.parse(JSON.stringify($event.detail.poll)); index = $event.detail.index; open = true"
         @keydown.window.escape="open = false" x-show="open" class="fixed z-50 inset-0 overflow-y-auto" x-ref="dialog"
@@ -696,7 +701,8 @@
                         <!-- Right Section -->
                         <div class="flex items-center space-x-2">
                             <i class="fa fa-question-circle text-gray-500 hover:text-gray-700" aria-hidden="true"></i>
-                            <span id="feedback-help" class="text-gray-500 hover:text-gray-700">Feedback and help</span>
+                            <span id="feedback-help" class="text-gray-500 hover:text-gray-700">Feedback and
+                                help</span>
                         </div>
                     </div>
                     <div class="tokpart">
@@ -829,7 +835,8 @@
 
                     <div class="flex justify-center mb-4 mt-7 text-gray">
                         <p class="text-l text-center break-words max-w-md">
-                            <span style="font-weight: 600;"> Create a Page </span> for a celebrity, brand or business.
+                            <span style="font-weight: 600;"> Create a Page </span> for a celebrity, brand or
+                            business.
                         </p>
                     </div>
 
@@ -852,7 +859,8 @@
                                         (Brasil)</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Español</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">العربية</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Bahasa Indonesia</a>
+                                    <a href="#" class="inline-block cursor-pointer hover:underline">Bahasa
+                                        Indonesia</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Deutsch</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">日本語</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Italiano</a>
@@ -869,7 +877,8 @@
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Sign Up</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Log in</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Messenger</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Facebook Lite</a>
+                                    <a href="#" class="inline-block cursor-pointer hover:underline">Facebook
+                                        Lite</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Video</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Places</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Games</a>
@@ -883,10 +892,13 @@
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Threads</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Fundraisers</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Services</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Voting Information
+                                    <a href="#" class="inline-block cursor-pointer hover:underline">Voting
+                                        Information
                                         Centre</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Privacy Policy</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Privacy Centre</a>
+                                    <a href="#" class="inline-block cursor-pointer hover:underline">Privacy
+                                        Policy</a>
+                                    <a href="#" class="inline-block cursor-pointer hover:underline">Privacy
+                                        Centre</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Groups</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">About</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Create ad</a>
@@ -897,7 +909,8 @@
                                     <a href="#" class="inline-block cursor-pointer hover:underline">AdChoices</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Terms</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Help</a>
-                                    <a href="#" class="inline-block cursor-pointer hover:underline">Contact uploading
+                                    <a href="#" class="inline-block cursor-pointer hover:underline">Contact
+                                        uploading
                                         and non-users</a>
                                     <a href="#" class="inline-block cursor-pointer hover:underline">Settings</a>
                                 </div>
